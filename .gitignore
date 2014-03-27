@@ -1,4 +1,17 @@
+# eclipse specific git ignore
+
 *.class
+
+*.csv
+
+.classpath
+
+.project
+
+bin/**
+
+.settings/**
+ 
 
 # Package Files #
 *.jar
