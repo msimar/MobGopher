@@ -1,4 +1,4 @@
-package com.mob.location;
+package com.univ.helsinki.app.util;
 
 import android.app.IntentService;
 import android.app.NotificationManager;
@@ -9,6 +9,7 @@ import android.support.v4.app.NotificationCompat.Builder;
 import android.util.Log;
 
 import com.google.android.gms.location.LocationClient;
+import com.univ.helsinki.app.R;
 
 public class LocationService extends IntentService {
 

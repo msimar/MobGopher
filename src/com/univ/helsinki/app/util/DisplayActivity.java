@@ -1,4 +1,4 @@
-package com.mob.location;
+package com.univ.helsinki.app.util;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.mob.location;
+package com.univ.helsinki.app.sensor;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,10 +36,12 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.univ.helsinki.app.R;
+import com.univ.helsinki.app.util.LocationService;
 
-public class MainActivity extends Activity implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener {
+public class LocationActivity extends Activity implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener {
 
-	private final static String TAG = MainActivity.class.getSimpleName();
+	private final static String TAG = LocationActivity.class.getSimpleName();
 	
 	private TextView txtConnectionStatus;
 	private TextView txtLastKnownLoc;
@@ -92,7 +94,7 @@ public class MainActivity extends Activity implements GooglePlayServicesClient.C
             // might want to change "executed" for the returned string passed
             // into onPostExecute() but that is upto you
         	Log.d(TAG, addr.get(0).toString())	;
-        	/*Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
+        	/*Intent intent = new Intent(LocationActivity.this, DisplayActivity.class);
         	intent.putExtra(DisplayActivity.KEY, addr.get(0).toString());
         	startActivity(intent);*/
         	
