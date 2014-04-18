@@ -56,7 +56,7 @@ public class LocationActivity extends Activity implements GooglePlayServicesClie
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_sensor_location);
 		txtConnectionStatus = (TextView) findViewById(R.id.txtConnectionStatus);
 		txtLastKnownLoc = (TextView) findViewById(R.id.txtLastKnownLoc);
 		etLocationInterval = (EditText) findViewById(R.id.etLocationInterval);

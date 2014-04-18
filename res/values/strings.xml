@@ -8,4 +8,108 @@
     <!-- activity name -->
     <string name="activity_title_sensor">Sensor List</string>
     <string name="activity_title_sensor_barometer">Barometer Sensor</string>
+    
+    <string name="pref_">Send crash reports</string>
+    <string name="pref_send_report">Send crash reports</string>
+    <string name="pref_send_report_summary">Helps to fix bugs</string>
+    		
+    <!-- 1 --> 
+    <string name="pref_type_all_sensor">All Sensor</string>
+    <string name="pref_type_all_sensor_summary">Enable/Disable All Sensor</string>
+    
+    <!-- 1 --> 
+    <string name="pref_type_accelerometer">Accelerometer</string>
+    <string name="pref_type_accelerometer_summary">Enable/Disable Accelerometer</string>
+    
+    <!-- 2 --> 
+    <string name="pref_type_magnetic_field">Magnetic Field</string>
+    <string name="pref_type_magnetic_field_summary">Enable/Disable Magnetic Field</string>
+    
+    <!-- 3 --> 
+    <string name="pref_type_orientation">Orientation</string>
+    <string name="pref_type_orientation_summary">Enable/Disable Orientation</string>
+    
+    <!-- 4 --> 
+    <string name="pref_type_gyroscope">Gyroscope</string>
+    <string name="pref_type_gyroscope_summary">Enable/Disable Gyroscope</string>
+    
+    <!-- 5 --> 
+    <string name="pref_type_light">Light</string>
+    <string name="pref_type_light_summary">Enable/Disable Light</string>
+    
+    <!-- 6 --> 
+    <string name="pref_type_pressure">Pressure</string>
+    <string name="pref_type_pressure_summary">Enable/Disable Pressure</string>
+    
+    <!-- 7 --> 
+    <string name="pref_type_temperature">Temperature</string>
+    <string name="pref_type_temperature_summary">Enable/Disable Temperature</string>
+    
+    <!-- 8 --> 
+    <string name="pref_type_proximity">Proximity</string>
+    <string name="pref_type_proximity_summary">Enable/Disable Proximity</string>
+    
+    <!-- 9 --> 
+    <string name="pref_type_gravity">Gravity</string>
+    <string name="pref_type_gravity_summary">Enable/Disable Gravity</string>
+    
+    <!-- 10 --> 
+    <string name="pref_type_linear_acceleration">Linear Acceleration</string>
+    <string name="pref_type_linear_acceleration_summary">Enable/Disable Linear Acceleration</string>
+    
+    <!-- 11 --> 
+    <string name="pref_type_rotation_vector">Rotation Vector</string>
+    <string name="pref_type_rotation_vector_summary">Enable/Disable Rotation Vector</string>
+    
+    <!-- 12 --> 
+    <string name="pref_type_relative_humidity">Relative Humidity</string>
+    <string name="pref_type_relative_humidity_summary">Enable/Disable Relative Humidity</string>
+    
+    <!-- 13 --> 
+    <string name="pref_type_ambient_temperature">Ambient Temperature</string>
+    <string name="pref_type_ambient_temperature_summary">Enable/Disable Ambient Temperature</string>
+    
+    <!-- 14 -->
+    <string name="pref_type_magnetic_field_uncalibrated">Magnetic Field Uncalibrated</string>
+    <string name="pref_type_magnetic_field_uncalibrated_summary">Enable/Disable Magnetic Field Uncalibrated</string>
+    
+    <!-- 15 -->
+    <string name="pref_type_game_rotation_vector">Game Rotation Vector</string>
+    <string name="pref_type_game_rotation_vector_summary">Enable/Disable Game Rotation Vector</string>
+    
+    <!-- 16 -->
+    <string name="pref_type_gyroscope_uncalibrated">Gyroscope Uncalibrated</string>
+    <string name="pref_type_gyroscope_uncalibrated_summary">Enable/Disable Gyroscope Uncalibrated</string>
+    
+    <!-- 17 -->
+    <string name="pref_type_significant_motion">Significant Motion</string>
+    <string name="pref_type_significant_motion_summary">Enable/Disable Significant Motion</string>
+    
+    <!-- 18 -->
+    <string name="pref_type_step_detector">Step Detector</string>
+    <string name="pref_type_step_detector_summary">Enable/Disable Step Detector</string>
+    
+    <!-- 19 -->
+    <string name="pref_type_step_counter">Step Counter</string>
+    <string name="pref_type_step_counter_summary">Enable/Disable Step Counter</string>
+    
+    <!-- 20 -->
+    <string name="pref_type_geomagnetic_rotation_vector">Geomagnetic Rotation Vector</string>
+    <string name="pref_type_geomagnetic_rotation_vector_summary">Enable/Disable Geomagnetic Rotation Vector</string>
+    
+    <!-- App Profile -->
+    <string name="pref_user_name">MobGopher</string>
+    <string name="pref_user_name_summary">version 0.1</string>
+     
+    <string name="pref_user_profile">App Profile</string>
+    <string name="pref_update_setting">Update Settings</string>
+    <string name="pref_configure_sensor_setting">Configure Sensor</string>
+    
+     <!--  Strings for possible PreferenceActivity Back/Next buttons -->
+    <string name="back_button_label">Back</string>
+    <string name="next_button_label">Next</string>
+
+    <!-- Optional button to Skip a PreferenceActivity [CHAR LIMIT=20] -->
+    <string name="skip_button_label">Skip</string>
+    
 </resources>

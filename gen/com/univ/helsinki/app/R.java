@@ -10,6 +10,9 @@ package com.univ.helsinki.app;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int card_pressed=0x7f050000;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -17,33 +20,71 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
+        public static final int card_inner_padding_horizontal_large=0x7f06000a;
+        public static final int card_inner_padding_left=0x7f060007;
+        public static final int card_inner_padding_right=0x7f060008;
+        public static final int card_inner_padding_vertical=0x7f060006;
+        public static final int card_inner_padding_vertical_large=0x7f060009;
+        public static final int card_outer_padding_bottom=0x7f060004;
+        public static final int card_outer_padding_firstlast=0x7f060002;
+        public static final int card_outer_padding_horizontal=0x7f060005;
+        public static final int card_outer_padding_top=0x7f060003;
+        public static final int menu_entries_sides_padding=0x7f06000f;
+        public static final int menu_entries_text=0x7f06000d;
+        public static final int menu_entries_title=0x7f06000e;
+        public static final int menu_entries_top_down_padding=0x7f060010;
+        public static final int menu_entries_top_down_radio_padding=0x7f060011;
+        public static final int menu_title=0x7f06000b;
+        public static final int menu_title_padding=0x7f06000c;
+        /**  Preference fragment padding, bottom 
+         */
+        public static final int preference_fragment_padding_bottom=0x7f060012;
+        /**  Preference fragment padding, sides 
+         */
+        public static final int preference_fragment_padding_side=0x7f060013;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int bg_card_content=0x7f020000;
+        public static final int card_selector=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int list_focused=0x7f020003;
+        public static final int pressed_background=0x7f020004;
+        public static final int unpressed_background=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f090010;
-        public static final int btnLastLoc=0x7f090002;
-        public static final int btnRequestLocationIntent=0x7f090008;
-        public static final int btnStartRequest=0x7f090003;
-        public static final int etLocationInterval=0x7f090005;
-        public static final int listView=0x7f09000b;
-        public static final int textView1=0x7f090004;
-        public static final int textView2=0x7f090007;
-        public static final int tvResult=0x7f09000f;
-        public static final int tvResult1=0x7f090009;
-        public static final int tvResult2=0x7f09000a;
-        public static final int txtConnectionStatus=0x7f090000;
-        public static final int txtLastKnownLoc=0x7f090001;
-        public static final int txtLocationRequest=0x7f090006;
-        public static final int xbox=0x7f09000c;
-        public static final int ybox=0x7f09000d;
-        public static final int zbox=0x7f09000e;
+        public static final int action_settings=0x7f0b001a;
+        public static final int back_button=0x7f0b0017;
+        public static final int btnLastLoc=0x7f0b000a;
+        public static final int btnRequestLocationIntent=0x7f0b0010;
+        public static final int btnStartRequest=0x7f0b000b;
+        public static final int button_bar=0x7f0b0016;
+        public static final int content=0x7f0b0015;
+        public static final int etLocationInterval=0x7f0b000d;
+        public static final int inner_frame=0x7f0b0012;
+        public static final int listView=0x7f0b0003;
+        public static final int listview=0x7f0b0011;
+        public static final int next_button=0x7f0b0019;
+        public static final int pager=0x7f0b0000;
+        public static final int skip_button=0x7f0b0018;
+        public static final int subtitle=0x7f0b0013;
+        public static final int textView1=0x7f0b000c;
+        public static final int textView2=0x7f0b000f;
+        public static final int title=0x7f0b0014;
+        public static final int tvResult=0x7f0b0007;
+        public static final int tvResult1=0x7f0b0001;
+        public static final int tvResult2=0x7f0b0002;
+        public static final int txtConnectionStatus=0x7f0b0008;
+        public static final int txtLastKnownLoc=0x7f0b0009;
+        public static final int txtLocationRequest=0x7f0b000e;
+        public static final int xbox=0x7f0b0004;
+        public static final int ybox=0x7f0b0005;
+        public static final int zbox=0x7f0b0006;
     }
     public static final class integer {
-        public static final int google_play_services_version=0x7f070000;
+        public static final int google_play_services_version=0x7f070001;
+        public static final int preference_fragment_scrollbarStyle=0x7f070000;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -51,18 +92,123 @@ public final class R {
         public static final int activity_sensor=0x7f030002;
         public static final int activity_sensor_accelerometer=0x7f030003;
         public static final int activity_sensor_barometer=0x7f030004;
+        public static final int activity_sensor_location=0x7f030005;
+        public static final int fragment_launchpad=0x7f030006;
+        public static final int listview_feed_item=0x7f030007;
+        public static final int preference_list_fragment=0x7f030008;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
+        public static final int main=0x7f0a0000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
+        public static final int action_settings=0x7f080001;
         /**  activity name 
          */
-        public static final int activity_title_sensor=0x7f050003;
-        public static final int activity_title_sensor_barometer=0x7f050004;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
+        public static final int activity_title_sensor=0x7f080003;
+        public static final int activity_title_sensor_barometer=0x7f080004;
+        public static final int app_name=0x7f080000;
+        /**   Strings for possible PreferenceActivity Back/Next buttons 
+         */
+        public static final int back_button_label=0x7f080037;
+        public static final int hello_world=0x7f080002;
+        public static final int next_button_label=0x7f080038;
+        public static final int pref_=0x7f080005;
+        public static final int pref_configure_sensor_setting=0x7f080036;
+        public static final int pref_send_report=0x7f080006;
+        public static final int pref_send_report_summary=0x7f080007;
+        /**  1 
+         */
+        public static final int pref_type_accelerometer=0x7f08000a;
+        public static final int pref_type_accelerometer_summary=0x7f08000b;
+        /**  1 
+         */
+        public static final int pref_type_all_sensor=0x7f080008;
+        public static final int pref_type_all_sensor_summary=0x7f080009;
+        /**  13 
+         */
+        public static final int pref_type_ambient_temperature=0x7f080022;
+        public static final int pref_type_ambient_temperature_summary=0x7f080023;
+        /**  15 
+         */
+        public static final int pref_type_game_rotation_vector=0x7f080026;
+        public static final int pref_type_game_rotation_vector_summary=0x7f080027;
+        /**  20 
+         */
+        public static final int pref_type_geomagnetic_rotation_vector=0x7f080030;
+        public static final int pref_type_geomagnetic_rotation_vector_summary=0x7f080031;
+        /**  9 
+         */
+        public static final int pref_type_gravity=0x7f08001a;
+        public static final int pref_type_gravity_summary=0x7f08001b;
+        /**  4 
+         */
+        public static final int pref_type_gyroscope=0x7f080010;
+        public static final int pref_type_gyroscope_summary=0x7f080011;
+        /**  16 
+         */
+        public static final int pref_type_gyroscope_uncalibrated=0x7f080028;
+        public static final int pref_type_gyroscope_uncalibrated_summary=0x7f080029;
+        /**  5 
+         */
+        public static final int pref_type_light=0x7f080012;
+        public static final int pref_type_light_summary=0x7f080013;
+        /**  10 
+         */
+        public static final int pref_type_linear_acceleration=0x7f08001c;
+        public static final int pref_type_linear_acceleration_summary=0x7f08001d;
+        /**  2 
+         */
+        public static final int pref_type_magnetic_field=0x7f08000c;
+        public static final int pref_type_magnetic_field_summary=0x7f08000d;
+        /**  14 
+         */
+        public static final int pref_type_magnetic_field_uncalibrated=0x7f080024;
+        public static final int pref_type_magnetic_field_uncalibrated_summary=0x7f080025;
+        /**  3 
+         */
+        public static final int pref_type_orientation=0x7f08000e;
+        public static final int pref_type_orientation_summary=0x7f08000f;
+        /**  6 
+         */
+        public static final int pref_type_pressure=0x7f080014;
+        public static final int pref_type_pressure_summary=0x7f080015;
+        /**  8 
+         */
+        public static final int pref_type_proximity=0x7f080018;
+        public static final int pref_type_proximity_summary=0x7f080019;
+        /**  12 
+         */
+        public static final int pref_type_relative_humidity=0x7f080020;
+        public static final int pref_type_relative_humidity_summary=0x7f080021;
+        /**  11 
+         */
+        public static final int pref_type_rotation_vector=0x7f08001e;
+        public static final int pref_type_rotation_vector_summary=0x7f08001f;
+        /**  17 
+         */
+        public static final int pref_type_significant_motion=0x7f08002a;
+        public static final int pref_type_significant_motion_summary=0x7f08002b;
+        /**  19 
+         */
+        public static final int pref_type_step_counter=0x7f08002e;
+        public static final int pref_type_step_counter_summary=0x7f08002f;
+        /**  18 
+         */
+        public static final int pref_type_step_detector=0x7f08002c;
+        public static final int pref_type_step_detector_summary=0x7f08002d;
+        /**  7 
+         */
+        public static final int pref_type_temperature=0x7f080016;
+        public static final int pref_type_temperature_summary=0x7f080017;
+        public static final int pref_update_setting=0x7f080035;
+        /**  App Profile 
+         */
+        public static final int pref_user_name=0x7f080032;
+        public static final int pref_user_name_summary=0x7f080033;
+        public static final int pref_user_profile=0x7f080034;
+        /**  Optional button to Skip a PreferenceActivity [CHAR LIMIT=20] 
+         */
+        public static final int skip_button_label=0x7f080039;
     }
     public static final class style {
         /** 
@@ -86,10 +232,15 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f090001;
+        public static final int card_inner=0x7f090003;
+        public static final int card_outer=0x7f090002;
+    }
+    public static final class xml {
+        public static final int settings=0x7f040000;
     }
 }

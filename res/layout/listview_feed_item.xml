@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/card_outer" >
+
+    <RelativeLayout
+        android:id="@+id/inner_frame"
+        style="@style/card_inner"
+        android:background="@drawable/bg_card_content"  >
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="26dip"
+            android:layout_below="@+id/title"
+            android:ellipsize="marquee"
+            android:gravity="left|center_vertical"
+            android:singleLine="true"
+            android:text="subtitle"
+            android:textSize="14sp" 
+              />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="26dip"
+            android:layout_below="@+id/subtitle"
+            android:singleLine="true"
+            android:text="description"
+            android:textSize="17sp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="2dp" />
+        
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="title"
+            android:textSize="20sp"
+            android:textColor="#ff8c00" 
+            android:textStyle="bold"/>
+        
+    </RelativeLayout>
+
+</LinearLayout>

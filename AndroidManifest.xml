@@ -36,12 +36,18 @@
         <activity
             android:name=".MainSensorActivity"
             android:label="@string/activity_title_sensor" >
+        </activity>
+        
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/activity_title_sensor" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name=".sensor.BarometerSensorActivity"
             android:label="@string/activity_title_sensor" >

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    
+    <PreferenceCategory android:title="@string/pref_configure_sensor_setting" >
+        
+        <!-- -1 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_all_sensor_key"
+            android:summary="@string/pref_type_all_sensor_summary"
+            android:title="@string/pref_type_all_sensor" >
+        </CheckBoxPreference>
+
+        <!-- 1 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_accelerometer_key"
+            android:summary="@string/pref_type_accelerometer_summary"
+            android:title="@string/pref_type_accelerometer" >
+        </CheckBoxPreference>
+
+        <!-- 2 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_magnetic_field_key"
+            android:summary="@string/pref_type_magnetic_field_summary"
+            android:title="@string/pref_type_magnetic_field" >
+        </CheckBoxPreference>
+
+        <!-- 3 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_orientation_key"
+            android:summary="@string/pref_type_orientation_summary"
+            android:title="@string/pref_type_orientation" >
+        </CheckBoxPreference>
+
+        <!-- 4 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_gyroscope_key"
+            android:summary="@string/pref_type_gyroscope_summary"
+            android:title="@string/pref_type_gyroscope" >
+        </CheckBoxPreference>
+
+        <!-- 5 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_light_key"
+            android:summary="@string/pref_type_light_summary"
+            android:title="@string/pref_type_light" >
+        </CheckBoxPreference>
+
+        <!-- 6 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_pressure_key"
+            android:summary="@string/pref_type_pressure_summary"
+            android:title="@string/pref_type_pressure" >
+        </CheckBoxPreference>
+
+        <!-- 7 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_temperature_key"
+            android:summary="@string/pref_type_temperature_summary"
+            android:title="@string/pref_type_temperature" >
+        </CheckBoxPreference>
+
+        <!-- 8 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_proximity_key"
+            android:summary="@string/pref_type_proximity_summary"
+            android:title="@string/pref_type_proximity" >
+        </CheckBoxPreference>
+
+        <!-- 9 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_gravity_key"
+            android:summary="@string/pref_type_gravity_summary"
+            android:title="@string/pref_type_gravity" >
+        </CheckBoxPreference>
+
+        <!-- 10 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_linear_acceleration_key"
+            android:summary="@string/pref_type_linear_acceleration_summary"
+            android:title="@string/pref_type_linear_acceleration" >
+        </CheckBoxPreference>
+
+        <!-- 11 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_rotation_vector_key"
+            android:summary="@string/pref_type_rotation_vector_summary"
+            android:title="@string/pref_type_rotation_vector" >
+        </CheckBoxPreference>
+
+        <!-- 12 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_relative_humidity_key"
+            android:summary="@string/pref_type_relative_humidity_summary"
+            android:title="@string/pref_type_relative_humidity" >
+        </CheckBoxPreference>
+
+        <!-- 13 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_ambient_temperature_key"
+            android:summary="@string/pref_type_ambient_temperature_summary"
+            android:title="@string/pref_type_ambient_temperature" >
+        </CheckBoxPreference>
+
+        <!-- 14 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_magnetic_field_uncalibrated_key"
+            android:summary="@string/pref_type_magnetic_field_uncalibrated_summary"
+            android:title="@string/pref_type_magnetic_field_uncalibrated" >
+        </CheckBoxPreference>
+
+        <!-- 15 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_game_rotation_vector_key"
+            android:summary="@string/pref_type_game_rotation_vector_summary"
+            android:title="@string/pref_type_game_rotation_vector" >
+        </CheckBoxPreference>
+
+        <!-- 16 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_gyroscope_uncalibrated_key"
+            android:summary="@string/pref_type_gyroscope_uncalibrated_summary"
+            android:title="@string/pref_type_gyroscope_uncalibrated" >
+        </CheckBoxPreference>
+
+        <!-- 17 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_significant_motion_key"
+            android:summary="@string/pref_type_significant_motion_summary"
+            android:title="@string/pref_type_significant_motion" >
+        </CheckBoxPreference>
+
+        <!-- 18 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_step_detector_key"
+            android:summary="@string/pref_type_step_detector_summary"
+            android:title="@string/pref_type_step_detector" >
+        </CheckBoxPreference>
+
+        <!-- 19 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_step_counter_key"
+            android:summary="@string/pref_type_step_counter_summary"
+            android:title="@string/pref_type_step_counter" >
+        </CheckBoxPreference>
+
+        <!-- 20 -->
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_type_geomagnetic_rotation_vector_key"
+            android:summary="@string/pref_type_geomagnetic_rotation_vector_summary"
+            android:title="@string/pref_type_geomagnetic_rotation_vector" >
+        </CheckBoxPreference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/pref_update_setting" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefSendReport"
+            android:summary="@string/pref_send_report_summary"
+            android:title="@string/pref_send_report" >
+        </CheckBoxPreference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/pref_user_profile" >
+        <EditTextPreference
+            android:key="prefUsername"
+            android:selectable="false"
+            android:summary="@string/pref_user_name_summary"
+            android:title="@string/pref_user_name" />
+        <EditTextPreference
+            android:key="prefCreatedBy"
+            android:selectable="false"
+            android:summary="Maninder Singh, University of Helsinki, Helsinki, Finland"
+            android:title="Created By" />
+        <EditTextPreference
+            android:key="prefLicence"
+            android:selectable="false"
+            android:summary="MIT Creative Licence"
+            android:title="Licence" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
