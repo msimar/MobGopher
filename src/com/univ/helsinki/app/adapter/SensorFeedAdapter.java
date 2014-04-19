@@ -17,12 +17,17 @@ public class SensorFeedAdapter extends BaseAdapter {
 
 	private List<SensorFeed> mFeedList;
 	private LayoutInflater mInflater;
-
+	
 	public SensorFeedAdapter(Context context) {
-		this.mFeedList = FeedResource.getInstance().getSensorFeedList();;
+		this.mFeedList = FeedResource.getInstance().getSensorFeedList();
 
 		this.mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	}
+	
+	public void setFeedList(List<SensorFeed> feedList){
+		this.mFeedList = feedList;
+		this.notifyDataSetChanged();
 	}
 
 	@Override
@@ -66,7 +71,7 @@ public class SensorFeedAdapter extends BaseAdapter {
 		holder.tvTitle.setText(mFeedList.get(position).getName());
 		holder.tvSubtitle.setText(mFeedList.get(position).getVendor());
 		holder.tvContent.setText(mFeedList.get(position).getTypeName());
-
+		
 		return convertView;
 	}
 

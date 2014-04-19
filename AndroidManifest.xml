@@ -40,7 +40,7 @@
         
         <activity
             android:name=".MainActivity"
-            android:label="@string/activity_title_sensor" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

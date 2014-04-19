@@ -2,15 +2,31 @@ package com.univ.helsinki.app.core;
 
 import java.util.Map;
 
+import android.content.Context;
+import android.preference.PreferenceManager;
+
 import com.univ.helsinki.app.db.FeedResource;
+import com.univ.helsinki.app.util.Constant;
 
 public final class SensorFeed {
-	
+
 	private String name;
 	private String vendor;
-	
+
 	private int typeValue;
 	private String typeName;
+
+	private String sensorKey;
+
+	private Map<String, String> valueMap;
+	
+	public String getSensorKey() {
+		return sensorKey;
+	}
+
+	public void setSensorKey(String sensorKey) {
+		this.sensorKey = sensorKey;
+	}
 
 	public int getTypeValue() {
 		return typeValue;
@@ -18,7 +34,10 @@ public final class SensorFeed {
 
 	public void setTypeValue(int typeValue) {
 		this.typeValue = typeValue;
-		this.setTypeName(FeedResource.getInstance().mAllSensorMap.get(typeValue));
+		this.setTypeName(FeedResource.getInstance().mAllSensorMap
+				.get(this.typeValue));
+		this.setSensorKey(Constant.sAllSensorPreferenceKeyMap
+				.get(this.typeValue));
 	}
 
 	public String getTypeName() {
@@ -27,17 +46,6 @@ public final class SensorFeed {
 
 	public void setTypeName(String typeName) {
 		this.typeName = typeName;
-	}
-
-	private Map<String, String> valueMap;
-	private boolean isAllowed;
-
-	public boolean isAllowed() {
-		return isAllowed;
-	}
-
-	public void setAllowed(boolean isAllowed) {
-		this.isAllowed = isAllowed;
 	}
 
 	public String getName() {

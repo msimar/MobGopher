@@ -16,6 +16,7 @@
 
 package com.univ.helsinki.app;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ActionBar;
@@ -24,21 +25,27 @@ import android.app.Service;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.univ.helsinki.app.adapter.SensorFeedAdapter;
 import com.univ.helsinki.app.core.SensorFeed;
 import com.univ.helsinki.app.db.FeedResource;
+import com.univ.helsinki.app.util.Constant;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
@@ -56,6 +63,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      */
     ViewPager mViewPager;
 
+    private SensorFeedAdapter mSensorFeedAdapter;
+    
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -67,7 +76,35 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
         
+        Constant.sAllSensorPreferenceKeyMap.put(1, Constant.PREF_TYPE_ACCELEROMETER_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(2, Constant.PREF_TYPE_MAGNETIC_FIELD_KEY);
+        
+        Constant.sAllSensorPreferenceKeyMap.put(3, Constant.PREF_TYPE_ORIENTATION_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(4, Constant.PREF_TYPE_GYROSCOPE_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(5, Constant.PREF_TYPE_LIGHT_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(6, Constant.PREF_TYPE_PRESSURE_KEY);
+        
+        Constant.sAllSensorPreferenceKeyMap.put(7, Constant.PREF_TYPE_TEMPERATURE_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(8, Constant.PREF_TYPE_PROXIMITY_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(9, Constant.PREF_TYPE_GRAVITY_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(10, Constant.PREF_TYPE_LINEAR_ACCELERATION_KEY);
+        
+        Constant.sAllSensorPreferenceKeyMap.put(11, Constant.PREF_TYPE_ROTATION_VECTOR_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(12, Constant.PREF_TYPE_RELATIVE_HUMIDITY_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(13, Constant.PREF_TYPE_AMBIENT_TEMPERATURE_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(14, Constant.PREF_TYPE_MAGNETIC_FIELD_UNCALIBRATED_KEY);
+        
+        Constant.sAllSensorPreferenceKeyMap.put(15, Constant.PREF_TYPE_GAME_ROTATION_VECTOR_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(16, Constant.PREF_TYPE_GYROSCOPE_UNCALIBRATED_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(17, Constant.PREF_TYPE_SIGNIFICANT_MOTION_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(18, Constant.PREF_TYPE_STEP_DETECTOR_KEY);
+        
+        Constant.sAllSensorPreferenceKeyMap.put(19, Constant.PREF_TYPE_STEP_COUNTER_KEY);
+        Constant.sAllSensorPreferenceKeyMap.put(20, Constant.PREF_TYPE_GEOMAGNETIC_ROTATION_VECTOR_KEY);
+        
         getAllDeviceSensorList();
+        
+        mSensorFeedAdapter = new SensorFeedAdapter(this);
 
         // Specify that the Home/Up button should not be enabled, since there is no hierarchical
         // parent.
@@ -75,7 +112,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         // Specify that we will be displaying tabs in the action bar.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
+        
         // Set up the ViewPager, attaching the adapter and setting up a listener for when the
         // user swipes between sections.
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -87,6 +124,26 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 // We can also use ActionBar.Tab#select() to do this if we have a reference to the
                 // Tab.
                 actionBar.setSelectedNavigationItem(position);
+                switch (position) {
+                	case 0:{
+                		// on focus when first fragment
+                		Toast.makeText(getApplicationContext(), "onPageSelected :" + position, Toast.LENGTH_SHORT).show();
+                		
+                		List<SensorFeed> mtempAllowedSensorFeedList = new ArrayList<SensorFeed>();
+                		// update the list over here.. to avoid empty shell
+                		for (SensorFeed sensor : FeedResource.getInstance().getSensorFeedList()) {
+                			
+                			boolean isChecked = PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+                				.getBoolean(sensor.getSensorKey(), false);
+                			
+                			if(isChecked)
+                				mtempAllowedSensorFeedList.add(sensor);
+						}
+                		// update the list with new created list
+                		mSensorFeedAdapter.setFeedList(mtempAllowedSensorFeedList);
+                		
+                	}break;
+                }// switch ends
             }
         });
 
@@ -120,7 +177,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to one of the primary
      * sections of the app.
      */
-    public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {
+    public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 
         public AppSectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -159,7 +216,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     /**
      * A fragment that launches other parts of the demo application.
      */
-    public static class LaunchpadSectionFragment extends Fragment {
+    public class LaunchpadSectionFragment extends Fragment
+    //implements OnFocusChangeListener 
+    {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -168,8 +227,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
             ListView mListview = (ListView) rootView.findViewById(R.id.listview);
              
-            SensorFeedAdapter mAdapter = new SensorFeedAdapter(getActivity());
-    		
     		registerForContextMenu(mListview);
     		
     		// Show contextview on item click
@@ -181,10 +238,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     			}
     		});
 
-    		mListview.setAdapter(mAdapter);
+    		mListview.setAdapter(mSensorFeedAdapter);
     		
             return rootView;
         }
+
+//		@Override
+//		public void onFocusChange(View v, boolean hasFocus) {
+//			// TODO Auto-generated method stub
+//			Toast.makeText(getActivity(), "focused :" + hasFocus, Toast.LENGTH_SHORT).show();
+//		}
     }
 
     /**
@@ -219,8 +282,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     			
     			SensorFeed sFeed = new SensorFeed();
     			
-    			sensor.getType();
-    			
     			sFeed.setName(sensor.getName());
     			sFeed.setVendor(sensor.getVendor());
     			sFeed.setTypeValue(sensor.getType());
@@ -228,4 +289,29 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     			FeedResource.getInstance().getSensorFeedList().add(sFeed);
     		}
     }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.action_send:
+            	
+            return true;
+//            case R.id.action_settings:
+//                openSettings();
+//                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    
+    
 }

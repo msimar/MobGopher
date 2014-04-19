@@ -48,13 +48,14 @@ public final class R {
     public static final class drawable {
         public static final int bg_card_content=0x7f020000;
         public static final int card_selector=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int list_focused=0x7f020003;
-        public static final int pressed_background=0x7f020004;
-        public static final int unpressed_background=0x7f020005;
+        public static final int ic_action_share=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int list_focused=0x7f020004;
+        public static final int pressed_background=0x7f020005;
+        public static final int unpressed_background=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b001a;
+        public static final int action_send=0x7f0b001a;
         public static final int back_button=0x7f0b0017;
         public static final int btnLastLoc=0x7f0b000a;
         public static final int btnRequestLocationIntent=0x7f0b0010;
@@ -101,7 +102,7 @@ public final class R {
         public static final int main=0x7f0a0000;
     }
     public static final class string {
-        public static final int action_settings=0x7f080001;
+        public static final int action_send=0x7f080001;
         /**  activity name 
          */
         public static final int activity_title_sensor=0x7f080003;

@@ -20,6 +20,7 @@ public class FeedResource {
 	
 	private FeedResource(){
 		setmDeviceFeed(new DeviceFeed());
+		
 		setSensorFeedList(new ArrayList<SensorFeed>());
 		
 		mAllSensorMap.put(1, "TYPE_ACCELEROMETER");
@@ -57,7 +58,7 @@ public class FeedResource {
 	private void setSensorFeedList(List<SensorFeed> sensorFeedList) {
 		this.mSensorFeedList = sensorFeedList;
 	}
-
+	
 	public DeviceFeed getmDeviceFeed() {
 		return mDeviceFeed;
 	}
@@ -65,7 +66,4 @@ public class FeedResource {
 	private void setmDeviceFeed(DeviceFeed mDeviceFeed) {
 		this.mDeviceFeed = mDeviceFeed;
 	}
-	
-	
-	
 }

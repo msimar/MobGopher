@@ -6,170 +6,171 @@
         
         <!-- -1 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_all_sensor_key"
             android:summary="@string/pref_type_all_sensor_summary"
-            android:title="@string/pref_type_all_sensor" >
+            android:title="@string/pref_type_all_sensor"
+            android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 1 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_accelerometer_key"
             android:summary="@string/pref_type_accelerometer_summary"
-            android:title="@string/pref_type_accelerometer" >
+            android:title="@string/pref_type_accelerometer" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 2 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_magnetic_field_key"
             android:summary="@string/pref_type_magnetic_field_summary"
-            android:title="@string/pref_type_magnetic_field" >
+            android:title="@string/pref_type_magnetic_field" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 3 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_orientation_key"
             android:summary="@string/pref_type_orientation_summary"
-            android:title="@string/pref_type_orientation" >
+            android:title="@string/pref_type_orientation" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 4 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_gyroscope_key"
             android:summary="@string/pref_type_gyroscope_summary"
-            android:title="@string/pref_type_gyroscope" >
+            android:title="@string/pref_type_gyroscope" 
+			android:defaultValue="true" >
+			
         </CheckBoxPreference>
 
         <!-- 5 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_light_key"
             android:summary="@string/pref_type_light_summary"
-            android:title="@string/pref_type_light" >
+            android:title="@string/pref_type_light" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 6 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_pressure_key"
             android:summary="@string/pref_type_pressure_summary"
-            android:title="@string/pref_type_pressure" >
+            android:title="@string/pref_type_pressure" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 7 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_temperature_key"
             android:summary="@string/pref_type_temperature_summary"
-            android:title="@string/pref_type_temperature" >
+            android:title="@string/pref_type_temperature" 
+            android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 8 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_proximity_key"
             android:summary="@string/pref_type_proximity_summary"
-            android:title="@string/pref_type_proximity" >
+            android:title="@string/pref_type_proximity" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 9 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_gravity_key"
             android:summary="@string/pref_type_gravity_summary"
-            android:title="@string/pref_type_gravity" >
+            android:title="@string/pref_type_gravity" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 10 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_linear_acceleration_key"
             android:summary="@string/pref_type_linear_acceleration_summary"
-            android:title="@string/pref_type_linear_acceleration" >
+            android:title="@string/pref_type_linear_acceleration" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 11 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_rotation_vector_key"
             android:summary="@string/pref_type_rotation_vector_summary"
-            android:title="@string/pref_type_rotation_vector" >
+            android:title="@string/pref_type_rotation_vector" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 12 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_relative_humidity_key"
             android:summary="@string/pref_type_relative_humidity_summary"
-            android:title="@string/pref_type_relative_humidity" >
+            android:title="@string/pref_type_relative_humidity" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 13 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_ambient_temperature_key"
             android:summary="@string/pref_type_ambient_temperature_summary"
-            android:title="@string/pref_type_ambient_temperature" >
+            android:title="@string/pref_type_ambient_temperature" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 14 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_magnetic_field_uncalibrated_key"
             android:summary="@string/pref_type_magnetic_field_uncalibrated_summary"
-            android:title="@string/pref_type_magnetic_field_uncalibrated" >
+            android:title="@string/pref_type_magnetic_field_uncalibrated" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 15 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_game_rotation_vector_key"
             android:summary="@string/pref_type_game_rotation_vector_summary"
-            android:title="@string/pref_type_game_rotation_vector" >
+            android:title="@string/pref_type_game_rotation_vector" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 16 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_gyroscope_uncalibrated_key"
             android:summary="@string/pref_type_gyroscope_uncalibrated_summary"
-            android:title="@string/pref_type_gyroscope_uncalibrated" >
+            android:title="@string/pref_type_gyroscope_uncalibrated" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 17 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_significant_motion_key"
             android:summary="@string/pref_type_significant_motion_summary"
-            android:title="@string/pref_type_significant_motion" >
+            android:title="@string/pref_type_significant_motion" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 18 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_step_detector_key"
             android:summary="@string/pref_type_step_detector_summary"
-            android:title="@string/pref_type_step_detector" >
+            android:title="@string/pref_type_step_detector" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 19 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_step_counter_key"
             android:summary="@string/pref_type_step_counter_summary"
-            android:title="@string/pref_type_step_counter" >
+            android:title="@string/pref_type_step_counter" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
 
         <!-- 20 -->
         <CheckBoxPreference
-            android:defaultValue="false"
             android:key="pref_type_geomagnetic_rotation_vector_key"
             android:summary="@string/pref_type_geomagnetic_rotation_vector_summary"
-            android:title="@string/pref_type_geomagnetic_rotation_vector" >
+            android:title="@string/pref_type_geomagnetic_rotation_vector" 
+			android:defaultValue="true" >
         </CheckBoxPreference>
     </PreferenceCategory>
     
