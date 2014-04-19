@@ -242,6 +242,7 @@ public final class R {
         public static final int card_outer=0x7f090002;
     }
     public static final class xml {
-        public static final int settings=0x7f040000;
+        public static final int original_settings=0x7f040000;
+        public static final int settings=0x7f040001;
     }
 }
