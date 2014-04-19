@@ -1,7 +1,5 @@
 package com.univ.helsinki.app.sensor;
 
-import com.univ.helsinki.app.R;
-
 import android.app.Activity;
 import android.app.Service;
 import android.hardware.Sensor;
@@ -11,6 +9,8 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.univ.helsinki.app.R;
 
 public class BarometerSensorActivity extends Activity implements
 		SensorEventListener {

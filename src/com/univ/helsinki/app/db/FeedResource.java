@@ -8,9 +8,6 @@ import java.util.Map;
 import com.univ.helsinki.app.core.DeviceFeed;
 import com.univ.helsinki.app.core.SensorFeed;
 
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
-
 public class FeedResource {
 	
 	public Map<Integer,String> mAllSensorMap = new HashMap<Integer, String>();

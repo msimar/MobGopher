@@ -10,8 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.univ.helsinki.app.R;
-import com.univ.helsinki.app.R.id;
-import com.univ.helsinki.app.R.layout;
 import com.univ.helsinki.app.core.SensorFeed;
 import com.univ.helsinki.app.db.FeedResource;
 
