@@ -101,6 +101,18 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 				SensorManager.SENSOR_DELAY_NORMAL);
 		
 		Log.i(TAG,"Sensor.TYPE_PRESSURE supported :" + isSupported);
+		
+		isSupported = mSensorManager.registerListener(mSensorListener,
+				mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE),
+				SensorManager.SENSOR_DELAY_NORMAL);
+		
+		Log.i(TAG,"Sensor.TYPE_AMBIENT_TEMPERATURE supported :" + isSupported);
+		
+		isSupported = mSensorManager.registerListener(mSensorListener,
+				mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+				SensorManager.SENSOR_DELAY_NORMAL);
+		
+		Log.i(TAG,"Sensor.TYPE_ACCELEROMETER supported :" + isSupported);
 	}
 
 	@Override
@@ -143,6 +155,24 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 				
 				Log.i(TAG,"pressure_value :" +  pressure_value + " hPa");
 				Log.i(TAG,"height :" + height + " m");
+				
+				mSensorFeedDataJson.setPressure(pressure_value + " hPa");
+				mSensorFeedDataJson.setHeight(height + " m");
+				
+			}else if (Sensor.TYPE_AMBIENT_TEMPERATURE == event.sensor.getType()) {
+				// values[0]: Atmospheric pressure in hPa (millibar)
+				float temperature_value = event.values[0];
+				
+				Log.i(TAG,"temperature_value :" +  temperature_value + " hPa");
+		 
+				mSensorFeedDataJson.setTemperature(temperature_value + " hPa");
+			}else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+				float[] values = event.values;
+				Log.i(TAG,"Accel X: " + values[0]);
+				Log.i(TAG,"Accel Y: " + values[1]);
+				Log.i(TAG,"Accel Z: " + values[2]);
+				
+				mSensorFeedDataJson.setAccelerometer(values[0], values[1], values[2]);
 			}
 		}
 	};
