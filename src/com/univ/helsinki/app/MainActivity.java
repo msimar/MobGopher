@@ -22,6 +22,7 @@ import java.util.List;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.Service;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -303,7 +304,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.action_send:
-            	
+            	startActivity(new Intent(this, SensorEvaluator.class));
             return true;
 //            case R.id.action_settings:
 //                openSettings();
