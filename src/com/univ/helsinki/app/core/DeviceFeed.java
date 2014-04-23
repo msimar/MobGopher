@@ -16,6 +16,10 @@ public class DeviceFeed {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return osVersion + ":" + osRelease + ":" + device + ":" + model + ":" + product;
+		return "OS Version :" + osVersion 
+				+ "\nOS Release :" + osRelease 
+				+ "\nDevice :" + device 
+				+ "\nModel :" + model 
+				+ "\nProduct :" + product;
 	}
 }

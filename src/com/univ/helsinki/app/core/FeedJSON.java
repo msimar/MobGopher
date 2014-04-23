@@ -62,7 +62,8 @@ public final class FeedJSON {
 				"\n\n Address : " 	+  this.address + 
 				"\n\n Pressume : " 	+ this.pressure +
 				"\n\n Height : " 	+ this.height +
-				"\n\n Temperature : " 	+ this.temperature ;
+				"\n\n Temperature : " 	+ this.temperature +
+				"\n\n" 	+ new DeviceFeed() ;
 		
 	}
 }
