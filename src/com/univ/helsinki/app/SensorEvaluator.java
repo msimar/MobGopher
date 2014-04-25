@@ -35,6 +35,7 @@ import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
+import com.google.gson.Gson;
 import com.univ.helsinki.app.core.FeedJSON;
 
 public class SensorEvaluator extends Activity implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener {
@@ -168,9 +169,9 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 				mSensorFeedDataJson.setTemperature(temperature_value + " hPa");
 			}else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 				float[] values = event.values;
-				Log.i(TAG,"Accel X: " + values[0]);
-				Log.i(TAG,"Accel Y: " + values[1]);
-				Log.i(TAG,"Accel Z: " + values[2]);
+//				Log.i(TAG,"Accel X: " + values[0]);
+//				Log.i(TAG,"Accel Y: " + values[1]);
+//				Log.i(TAG,"Accel Z: " + values[2]);
 				
 				mSensorFeedDataJson.setAccelerometer(values[0], values[1], values[2]);
 			}
@@ -245,6 +246,11 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 				mSensorFeedDataJson.setAddres(address.subSequence(startIndx, endIndx).toString());
 				
 				mTextView.setText("" + mSensorFeedDataJson);
+				
+				Gson gson = new Gson();
+				String json = gson.toJson(mSensorFeedDataJson);
+				
+				Log.i(TAG, "json: " + json);
 	        }
 
 	        @Override

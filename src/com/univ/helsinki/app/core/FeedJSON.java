@@ -1,7 +1,10 @@
 package com.univ.helsinki.app.core;
 
+import android.text.format.DateFormat;
+
 
 public final class FeedJSON {
+	
 	private String latitude;
 	private String longitude;
 	
@@ -15,6 +18,15 @@ public final class FeedJSON {
 	private String accelerometerX = "";
 	private String accelerometerY = "";
 	private String accelerometerZ = "";
+	
+	private String timestamp = "";
+	
+	private DeviceFeed deviceFeed;
+	
+	public FeedJSON(){
+		setTimestamp((DateFormat.format("dd-MM-yyyy hh:mm:ss", new java.util.Date()).toString()));
+		setDeviceFeed(new DeviceFeed());
+	}
 	
 	public void setPressure(String _pressure){
 		this.pressure = _pressure;
@@ -54,6 +66,22 @@ public final class FeedJSON {
 		this.accelerometerZ = z;
 	}
 	
+	public String getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
+	}
+	
+	public DeviceFeed getDeviceFeed() {
+		return deviceFeed;
+	}
+
+	public void setDeviceFeed(DeviceFeed deviceFeed) {
+		this.deviceFeed = deviceFeed;
+	}
+	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -63,7 +91,8 @@ public final class FeedJSON {
 				"\n\n Pressume : " 	+ this.pressure +
 				"\n\n Height : " 	+ this.height +
 				"\n\n Temperature : " 	+ this.temperature +
-				"\n\n" 	+ new DeviceFeed() ;
+				"\n\n timestamp : " 	+ this.timestamp +
+				"\n\n" 	+ deviceFeed ;
 		
 	}
 }
