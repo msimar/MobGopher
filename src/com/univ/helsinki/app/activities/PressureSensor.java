@@ -1,4 +1,4 @@
-package com.univ.helsinki.app.sensor;
+package com.univ.helsinki.app.activities;
 
 import java.io.IOException;
 import java.io.InputStream;

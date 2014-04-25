@@ -206,7 +206,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         public CharSequence getPageTitle(int position) {
         	CharSequence title = "" ;
         	if( position == 0 ){
-        		title = "All Sensor";
+        		title = "All AndroidSensor";
         	}else if( position == 1 ){
         		title = "Configure";
         	}

@@ -1,4 +1,4 @@
-package com.univ.helsinki.app.sensor;
+package com.univ.helsinki.app.activities;
 
 import android.app.Activity;
 import android.app.Service;
@@ -35,7 +35,7 @@ public class BarometerSensorActivity extends Activity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
-		// register this class as a listener for the Pressure Sensor
+		// register this class as a listener for the Pressure AndroidSensor
 		boolean isSupported = mSensorManager.registerListener(this,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE),
 				SensorManager.SENSOR_DELAY_NORMAL);

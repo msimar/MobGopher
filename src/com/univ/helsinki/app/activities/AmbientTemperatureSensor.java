@@ -1,4 +1,4 @@
-package com.univ.helsinki.app.sensor;
+package com.univ.helsinki.app.activities;
 
 import android.app.Activity;
 import android.content.Context;

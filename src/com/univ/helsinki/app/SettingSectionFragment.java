@@ -53,7 +53,7 @@ public class SettingSectionFragment extends PreferenceFragment {
             cboxPref.setDefaultValue(true);
             cboxPref.setKey(sensorFeed.getSensorKey());
             cboxPref.setTitle(sensorFeed.getTypeName());
-            cboxPref.setSummary("Enable/Disable Sensor");
+            cboxPref.setSummary("Enable/Disable AndroidSensor");
             
             this.mSensorCategory.addPreference(cboxPref);
             

@@ -18,21 +18,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".sensor.AmbientTemperatureSensor"
+            android:name="com.univ.helsinki.app.activities.AmbientTemperatureSensor"
             android:label="@string/activity_title_sensor" >
         </activity>
-        <activity
-            android:name=".sensor.PressureSensor"
-            android:label="@string/activity_title_sensor" >
-        </activity>
-        <activity
-            android:name=".sensor.AccelerometerSensorActivity"
-            android:label="@string/activity_title_sensor" >
-        </activity>
-        <activity
-            android:name=".sensor.SensorListActivity"
-            android:label="@string/activity_title_sensor" >
-        </activity>
+         
         <activity
             android:name=".MainSensorActivity"
             android:label="@string/activity_title_sensor" >
@@ -54,11 +43,11 @@
         </activity>
         
         <activity
-            android:name=".sensor.BarometerSensorActivity"
+            android:name="com.univ.helsinki.app.activities.BarometerSensorActivity"
             android:label="@string/activity_title_sensor" >
         </activity>
         <activity
-            android:name=".sensor.LocationActivity"
+            android:name="com.univ.helsinki.app.activities.LocationActivity"
             android:label="@string/activity_title_sensor" >
         </activity>
 

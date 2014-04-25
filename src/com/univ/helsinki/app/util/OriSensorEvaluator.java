@@ -1,12 +1,10 @@
-package com.univ.helsinki.app;
+package com.univ.helsinki.app.util;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -38,18 +36,21 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.gson.Gson;
-import com.univ.helsinki.app.sensor.SensorStream;
-import com.univ.helsinki.app.sensor.SensorUnit;
+import com.univ.helsinki.app.core.FeedJSON;
 
-public class SensorEvaluator extends Activity implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener {
+public class OriSensorEvaluator extends Activity implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener {
 
-	private final String TAG = SensorEvaluator.class.getSimpleName();
+	private final String TAG = OriSensorEvaluator.class.getSimpleName();
 
 	private SensorManager mSensorManager = null;
+
+	public static final String TAG_PRESSURE = "aws:pressure";
+	public static final String TAG_LONGITUDE = "aws:longitude";
+	public static final String TAG_LATITUDE = "aws:latitude";
+	
+	private FeedJSON mSensorFeedDataJson;
 	
 	private TextView mTextView;
-	
-	private SensorStream mSensorStream;
 	
 	/**
 	 * Location Handling
@@ -66,7 +67,7 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 		
 		setContentView(mTextView);
 		
-		this.mSensorStream = new SensorStream();
+		this.mSensorFeedDataJson = new FeedJSON();
 		
 		// get SensorManager instance.
 		this.mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -89,8 +90,6 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 		}
 		else{
 			Toast.makeText(context, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
-		
-			
 		}
 	}
 
@@ -158,23 +157,8 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 				Log.i(TAG,"pressure_value :" +  pressure_value + " hPa");
 				Log.i(TAG,"height :" + height + " m");
 				
-				//setPressure(pressure_value + " hPa");
-				//setHeight(height + " m");
-				
-				SensorUnit object = new SensorUnit();
-				object.setName("Sensor.TYPE_PRESSURE");
-				object.setStatus(true);
-				object.setTypeValue(Integer.toString(Sensor.TYPE_PRESSURE));
-				object.setVendor("");
-				
-				Map<String, Float> valueMap = new HashMap<String, Float>();
-				valueMap.put("pressure", pressure_value);
-				valueMap.put("height", height);
-				
-				object.getValues().add(valueMap);
-				
-				mSensorStream.getSensors().add(object);
-				
+				mSensorFeedDataJson.setPressure(pressure_value + " hPa");
+				mSensorFeedDataJson.setHeight(height + " m");
 				
 			}else if (Sensor.TYPE_AMBIENT_TEMPERATURE == event.sensor.getType()) {
 				// values[0]: Atmospheric pressure in hPa (millibar)
@@ -182,43 +166,14 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 				
 				Log.i(TAG,"temperature_value :" +  temperature_value + " hPa");
 		 
-				//setTemperature(temperature_value + " hPa");
-				
-				SensorUnit object = new SensorUnit();
-				object.setName("Sensor.TYPE_AMBIENT_TEMPERATURE");
-				object.setStatus(true);
-				object.setTypeValue(Integer.toString(Sensor.TYPE_AMBIENT_TEMPERATURE));
-				object.setVendor("");
-				
-				Map<String, Float> valueMap = new HashMap<String, Float>();
-				valueMap.put("ambient_temperature", temperature_value);
-				
-				object.getValues().add(valueMap);
-				
-				mSensorStream.getSensors().add(object);
-				
+				mSensorFeedDataJson.setTemperature(temperature_value + " hPa");
 			}else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 				float[] values = event.values;
 //				Log.i(TAG,"Accel X: " + values[0]);
 //				Log.i(TAG,"Accel Y: " + values[1]);
 //				Log.i(TAG,"Accel Z: " + values[2]);
 				
-				//setAccelerometer(values[0], values[1], values[2]);
-				
-				SensorUnit object = new SensorUnit();
-				object.setName("Sensor.TYPE_ACCELEROMETER");
-				object.setStatus(true);
-				object.setTypeValue(Integer.toString(Sensor.TYPE_ACCELEROMETER));
-				object.setVendor("");
-				
-				Map<String, Float> valueMap = new HashMap<String, Float>();
-				valueMap.put("accelerometer_x", values[0]);
-				valueMap.put("accelerometer_y", values[1]);
-				valueMap.put("accelerometer_z", values[2]);
-				
-				object.getValues().add(valueMap);
-				
-				mSensorStream.getSensors().add(object);
+				mSensorFeedDataJson.setAccelerometer(values[0], values[1], values[2]);
 			}
 		}
 	};
@@ -232,22 +187,7 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 					final Location loc =locationclient.getLastLocation();
 					Log.i(TAG, "Last Known Location :" + loc.getLatitude() + "," + loc.getLongitude());
 					
-					//setLastKnowLocation(loc.getLatitude(),  loc.getLongitude());
-					
-					SensorUnit object = new SensorUnit();
-					object.setName("Sensor.TYPE_LOCATION");
-					object.setStatus(true);
-					object.setTypeValue(Integer.toString(-111));
-					object.setVendor("");
-					
-					Map<String, Float> valueMap = new HashMap<String, Float>();
-					valueMap.put("latitude", (float) loc.getLatitude());
-					valueMap.put("longitude", (float) loc.getLongitude());
-					
-					object.getValues().add(valueMap);
-					
-					mSensorStream.getSensors().add(object);
-					
+					this.mSensorFeedDataJson.setLastKnowLocation(loc.getLatitude(),  loc.getLongitude());
 					
 					Log.i(TAG, "Requesting new location :");
 					new LongOperation().execute(loc);
@@ -303,27 +243,12 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 				 
 				Log.i(TAG, "Location Address: " + address.subSequence(startIndx, endIndx));
 				
-				//setAddres(address.subSequence(startIndx, endIndx).toString());
+				mSensorFeedDataJson.setAddres(address.subSequence(startIndx, endIndx).toString());
 				
-				//mTextView.setText("" + mSensorFeedDataJson);
-				
-//				SensorUnit object = new SensorUnit();
-//				object.setName("Sensor.TYPE_LOCATION");
-//				object.setStatus(true);
-//				object.setTypeValue(Integer.toString(-111));
-//				object.setVendor("");
-//				
-//				Map<String, Float> valueMap = new HashMap<String, Float>();
-//				valueMap.put("latitude", (float) loc.getLatitude());
-//				valueMap.put("longitude", (float) loc.getLongitude());
-//				
-//				object.getValues().add(valueMap);
-//				
-//				mSensorStream.getSensors().add(object);
-				
+				mTextView.setText("" + mSensorFeedDataJson);
 				
 				Gson gson = new Gson();
-				String json = gson.toJson(mSensorStream);
+				String json = gson.toJson(mSensorFeedDataJson);
 				
 				Log.i(TAG, "json: " + json);
 	        }

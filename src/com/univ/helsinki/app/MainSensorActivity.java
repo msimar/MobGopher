@@ -13,12 +13,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.univ.helsinki.app.sensor.AccelerometerSensorActivity;
-import com.univ.helsinki.app.sensor.AmbientTemperatureSensor;
-import com.univ.helsinki.app.sensor.BarometerSensorActivity;
-import com.univ.helsinki.app.sensor.LocationActivity;
-import com.univ.helsinki.app.sensor.PressureSensor;
-import com.univ.helsinki.app.sensor.SensorListActivity;
+import com.univ.helsinki.app.activities.AccelerometerSensorActivity;
+import com.univ.helsinki.app.activities.AmbientTemperatureSensor;
+import com.univ.helsinki.app.activities.BarometerSensorActivity;
+import com.univ.helsinki.app.activities.LocationActivity;
+import com.univ.helsinki.app.activities.PressureSensor;
+import com.univ.helsinki.app.activities.SensorListActivity;
 
 public class MainSensorActivity extends Activity {
 
@@ -92,27 +92,27 @@ public class MainSensorActivity extends Activity {
 
 		Map<String, String> data2 = new HashMap<String, String>();
 		data2.put("name", mActivityList[1]);
-		data2.put("status", "Presure and Height Sensor");
+		data2.put("status", "Presure and Height AndroidSensor");
 		mSensorActyList.add(data2);
 
 		Map<String, String> data3 = new HashMap<String, String>();
 		data3.put("name", mActivityList[2]);
-		data3.put("status", "Barometer Sensor");
+		data3.put("status", "Barometer AndroidSensor");
 		mSensorActyList.add(data3);
 
 		Map<String, String> data4 = new HashMap<String, String>();
 		data4.put("name", mActivityList[3]);
-		data4.put("status", "Temperature Sensor");
+		data4.put("status", "Temperature AndroidSensor");
 		mSensorActyList.add(data4);
 
 		Map<String, String> data5 = new HashMap<String, String>();
 		data5.put("name", mActivityList[4]);
-		data5.put("status", "Accelerometer Sensor");
+		data5.put("status", "Accelerometer AndroidSensor");
 		mSensorActyList.add(data5);
 
 		Map<String, String> data6 = new HashMap<String, String>();
 		data6.put("name", mActivityList[5]);
-		data6.put("status", "Location Sensor");
+		data6.put("status", "Location AndroidSensor");
 		mSensorActyList.add(data6);
 	}
 }

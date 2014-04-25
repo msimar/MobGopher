@@ -1,4 +1,4 @@
-package com.univ.helsinki.app.sensor;
+package com.univ.helsinki.app.activities;
 
 import android.app.Activity;
 import android.hardware.Sensor;
@@ -45,7 +45,7 @@ public class AccelerometerSensorActivity extends Activity implements SensorEvent
 	protected void onResume() {
 		super.onResume();
 
-		// register this class as a listener for the Pressure Sensor
+		// register this class as a listener for the Pressure AndroidSensor
 		boolean isSupported = mSensorManager.registerListener(this, mAccelerometer,
 				SensorManager.SENSOR_DELAY_NORMAL);
 	}
