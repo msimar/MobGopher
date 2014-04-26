@@ -11,9 +11,11 @@ import com.univ.helsinki.app.util.Constant;
 public final class SensorFeed {
 
 	private String name;
+	
 	private String vendor;
 
 	private int typeValue;
+	
 	private String typeName;
 
 	private String sensorKey;
