@@ -4,6 +4,8 @@
     <string name="app_name">MobGopher</string>
     <string name="action_send">Send</string>
     <string name="hello_world">Hello world!</string>
+    <string name="activity_name_main">CaratSensor</string>
+    <string name="activity_name_view">Synced Metadata</string>
 
     <!-- activity name -->
     <string name="activity_title_sensor">Sensor List</string>

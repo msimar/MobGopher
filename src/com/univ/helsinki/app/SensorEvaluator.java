@@ -38,10 +38,12 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.gson.Gson;
+import com.univ.helsinki.app.db.FeedResource;
 import com.univ.helsinki.app.sensor.SensorStream;
 import com.univ.helsinki.app.sensor.SensorUnit;
 
-public class SensorEvaluator extends Activity implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener {
+public class SensorEvaluator extends Activity 
+implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener {
 
 	private final String TAG = SensorEvaluator.class.getSimpleName();
 
@@ -323,9 +325,15 @@ public class SensorEvaluator extends Activity implements GooglePlayServicesClien
 				
 				
 				Gson gson = new Gson();
-				String json = gson.toJson(mSensorStream);
+				String jsonString = gson.toJson(mSensorStream);
 				
-				Log.i(TAG, "json: " + json);
+				Log.i(TAG, "json: " + jsonString);
+				
+				mTextView.setText(jsonString);
+				
+				FeedResource.getInstance().openDataSource();
+				FeedResource.getInstance().addFeed(0, 
+						FeedResource.getInstance().createFeed("Synced", jsonString));
 	        }
 
 	        @Override

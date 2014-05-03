@@ -43,6 +43,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.univ.helsinki.app.activities.ViewActivity;
+import com.univ.helsinki.app.adapter.RecentActivityAdapter;
 import com.univ.helsinki.app.adapter.SensorFeedAdapter;
 import com.univ.helsinki.app.core.SensorFeed;
 import com.univ.helsinki.app.db.FeedResource;
@@ -69,7 +71,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        
+        FeedResource.getInstance().inti(this);
+        
         // Create the adapter that will return a fragment for each of the three primary sections
         // of the app.
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
@@ -187,7 +191,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         @Override
         public Fragment getItem(int i) {
             switch (i) {
-                case 0:
+            
+            	case 0:
+                // The first section of the app is the most interesting -- it offers
+                // a launchpad into the other demonstrations in this example application.
+                return new RecentSectionFragment();
+                
+                case 1:
                     // The first section of the app is the most interesting -- it offers
                     // a launchpad into the other demonstrations in this example application.
                     return new LaunchpadSectionFragment();
@@ -199,18 +209,55 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
         	CharSequence title = "" ;
         	if( position == 0 ){
-        		title = "All AndroidSensor";
+        		title = "Recent Activities";
         	}else if( position == 1 ){
+        		title = "All Sensor";
+        	}else if( position == 2 ){
         		title = "Configure";
         	}
             return title;
+        }
+    }
+    
+    public class RecentSectionFragment extends Fragment {
+
+    	@Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.activity_recent, container, false);
+
+    		final ListView listview = (ListView) rootView.findViewById(R.id.listview);
+    		
+    		// create adapter instance
+    		RecentActivityAdapter adapter = new RecentActivityAdapter(getActivity());
+    		// set list adapter
+    		listview.setAdapter(adapter);
+    		// set adapter in feed resource 
+    		FeedResource.getInstance().setRecentFeedAdapter(adapter);
+    		
+    		if(FeedResource.getInstance().getAllFeed().size() > 0){
+    			listview.setVisibility(View.VISIBLE);
+    			rootView.findViewById(R.id.emptystub).setVisibility(View.GONE);
+			}
+    		
+    		listview.setOnItemClickListener(new OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					Intent intent = new Intent(MainActivity.this, ViewActivity.class);
+					intent.putExtra(ViewActivity.EXTRAS_ROW_ID, position);
+					startActivity(intent);
+				}
+			});
+    		
+            return rootView;
         }
     }
 
@@ -314,5 +361,21 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
     }
     
-    
+    @Override
+	protected void onResume() {
+    	FeedResource.getInstance().openDataSource();
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		FeedResource.getInstance().closeDataSource();
+		super.onPause();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		FeedResource.getInstance().destory();
+		super.onDestroy();
+	}
 }

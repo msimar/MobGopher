@@ -44,3 +44,21 @@ public class SensorStream {
 		this.sensorDevice = sensorDevice;
 	}
 }
+/**
+ * {"sensorDevice":{"brand":"samsung","device":"crater","id":"JDQ39",
+ * "manufacturer":"samsung","model":"GT-I9152","osRelease":"4.2.2","osVersion":
+ * "3.0.31-1128812"
+ * ,"product":"craterxx"},"sensors":[{"name":"Sensor.TYPE_LOCATION"
+ * ,"vendor":"","typeValue"
+ * :"-111","values":[{"longitude":24.900528,"latitude":60.230667
+ * }],"status":true}
+ * ,{"name":"Sensor.TYPE_ACCELEROMETER","vendor":"","typeValue":
+ * "1","values":[{"accelerometer_z"
+ * :9.876082,"accelerometer_y":0.6907272,"accelerometer_x"
+ * :-0.29568392}],"status"
+ * :true},{"name":"Sensor.TYPE_ACCELEROMETER","vendor":"",
+ * "typeValue":"1","values"
+ * :[{"accelerometer_z":9.85214,"accelerometer_y":0.6619968
+ * ,"accelerometer_x":-0.29209262
+ * }],"status":true}],"timestamp":"26-04-2014 01:25:08"}
+ */
