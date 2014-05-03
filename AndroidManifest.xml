@@ -32,20 +32,31 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
         <activity
-            android:name=".SensorEvaluator"
-            android:label="@string/app_name" >
+            android:name="com.univ.helsinki.app.activities.SettingPreferenceActivity"
+            android:label="@string/activity_title_settings"
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        
+        <activity
+            android:name="com.univ.helsinki.app.activities.SettingConfigureSensor"
+            android:label="@string/activity_title_settings_configure_sensor"
+            android:parentActivityName=".activities.SettingPreferenceActivity" >
+            <intent-filter>
+           <action android:name=".activities.SettingConfigureSensor" />
+           <category android:name="android.intent.category.DEFAULT" />
+       </intent-filter>
         </activity>
         
         <activity
             android:name="com.univ.helsinki.app.activities.BarometerSensorActivity"
             android:label="@string/activity_title_sensor" >
         </activity>
+        
         <activity
             android:name="com.univ.helsinki.app.activities.LocationActivity"
             android:label="@string/activity_title_sensor" >

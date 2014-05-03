@@ -20,8 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.Service;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
@@ -32,6 +34,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,9 +43,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.univ.helsinki.app.activities.SettingPreferenceActivity;
 import com.univ.helsinki.app.activities.ViewActivity;
 import com.univ.helsinki.app.adapter.RecentActivityAdapter;
 import com.univ.helsinki.app.adapter.SensorFeedAdapter;
@@ -197,19 +202,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 // a launchpad into the other demonstrations in this example application.
                 return new RecentSectionFragment();
                 
-                case 1:
+            	default:
                     // The first section of the app is the most interesting -- it offers
                     // a launchpad into the other demonstrations in this example application.
                     return new LaunchpadSectionFragment();
 
-                default:
-                    return new SettingSectionFragment();
             }
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
 
         @Override
@@ -219,9 +222,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         		title = "Recent Activities";
         	}else if( position == 1 ){
         		title = "All Sensor";
-        	}else if( position == 2 ){
-        		title = "Configure";
-        	}
+        	} 
             return title;
         }
     }
@@ -259,6 +260,24 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     		
             return rootView;
         }
+    	
+    	@Override
+    	public void onResume() {
+        	FeedResource.getInstance().openDataSource();
+    		super.onResume();
+    	}
+
+    	@Override
+    	public void onPause() {
+    		FeedResource.getInstance().closeDataSource();
+    		super.onPause();
+    	}
+    	
+    	@Override
+    	public void onDestroy() {
+    		FeedResource.getInstance().destory();
+    		super.onDestroy();
+    	}
     }
 
     /**
@@ -350,12 +369,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.action_send:
-            	startActivity(new Intent(this, SensorEvaluator.class));
+            case R.id.action_settings:
+            	startActivity(new Intent(this, SettingPreferenceActivity.class));
             return true;
-//            case R.id.action_settings:
-//                openSettings();
-//                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
