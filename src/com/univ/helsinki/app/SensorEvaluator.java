@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -42,8 +43,11 @@ import com.univ.helsinki.app.db.FeedResource;
 import com.univ.helsinki.app.sensor.SensorStream;
 import com.univ.helsinki.app.sensor.SensorUnit;
 
-public class SensorEvaluator extends Activity 
-implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient.OnConnectionFailedListener,LocationListener {
+public 	class 		SensorEvaluator 
+		extends 	Activity 
+		implements 	GooglePlayServicesClient.ConnectionCallbacks,
+					GooglePlayServicesClient.OnConnectionFailedListener,
+					LocationListener {
 
 	private final String TAG = SensorEvaluator.class.getSimpleName();
 
@@ -52,6 +56,8 @@ implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient
 	private TextView mTextView;
 	
 	private SensorStream mSensorStream;
+	
+	private ProgressDialog mSyncDialog;
 	
 	/**
 	 * Location Handling
@@ -66,7 +72,10 @@ implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient
 		mTextView = new TextView(this);
 		mTextView.setTextSize((float) 21.0);
 		
-		setContentView(mTextView);
+//		setContentView(mTextView);
+		
+		mSyncDialog = ProgressDialog.show(this, "", 
+				 getResources().getString(R.string.sync_dialog_message), true); 
 		
 		this.mSensorStream = new SensorStream();
 		
@@ -334,6 +343,8 @@ implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient
 				FeedResource.getInstance().openDataSource();
 				FeedResource.getInstance().addFeed(0, 
 						FeedResource.getInstance().createFeed("Synced", jsonString));
+				
+				closeActivity();
 	        }
 
 	        @Override
@@ -341,6 +352,13 @@ implements GooglePlayServicesClient.ConnectionCallbacks,GooglePlayServicesClient
 
 	        @Override
 	        protected void onProgressUpdate(Void... values) {}
+	 }
+	 
+	 private void closeActivity(){
+		 Toast.makeText(this, getResources().getString(R.string.sync_complete_message), 
+				 Toast.LENGTH_SHORT).show();
+		 this.mSyncDialog.cancel();
+		 this.finish();
 	 }
 	 
 	 public List<Address> getFromLocation(double lat, double lng){

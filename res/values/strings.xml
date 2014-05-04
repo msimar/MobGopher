@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MobGopher</string>
+    <string name="app_name">CaratSensor</string>
+    <string name="app_name_alias">MobGopher</string>
+    
+    <!-- sync -->
+    <string name="action_sync">Sync \u0026 Share</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    
+    <string name="sync_dialog_message">Syncing sensor metadata with Server. Please wait..</string>
+    <string name="sync_complete_message">Sync Complete. Sensor metadata synced with Server.</string>
+    
+    <!-- activity name -->
     <string name="activity_name_main">CaratSensor</string>
     <string name="activity_name_view">Synced Metadata</string>
-
-    <!-- activity name -->
     <string name="activity_title_settings_configure_sensor">Configure Sensor</string>
     <string name="activity_title_settings">Settings</string>
     <string name="activity_title_sensor">Sensor List</string>

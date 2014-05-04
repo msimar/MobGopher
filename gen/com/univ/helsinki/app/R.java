@@ -56,48 +56,52 @@ public final class R {
         public static final int btn_timestamp_20=0x7f020003;
         public static final int btn_timestamp_48=0x7f020004;
         public static final int card_selector=0x7f020005;
-        public static final int ic_action_share=0x7f020006;
-        public static final int ic_arrow_right=0x7f020007;
-        public static final int ic_launcher=0x7f020008;
-        public static final int ic_settings_blue_48=0x7f020009;
-        public static final int list_focused=0x7f02000a;
-        public static final int pressed_background=0x7f02000b;
-        public static final int unpressed_background=0x7f02000c;
+        public static final int flash=0x7f020006;
+        public static final int ic_action_share=0x7f020007;
+        public static final int ic_arrow_right=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
+        public static final int ic_settings_blue_48=0x7f02000a;
+        public static final int ic_sync_blue_48=0x7f02000b;
+        public static final int list_focused=0x7f02000c;
+        public static final int pressed_background=0x7f02000d;
+        public static final int unpressed_background=0x7f02000e;
     }
     public static final class id {
-        public static final int action_settings=0x7f0c0020;
-        public static final int arrow=0x7f0c001b;
-        public static final int back_button=0x7f0c001d;
-        public static final int btnLastLoc=0x7f0c000c;
-        public static final int btnRequestLocationIntent=0x7f0c0012;
-        public static final int btnStartRequest=0x7f0c000d;
-        public static final int button_bar=0x7f0c001c;
-        public static final int containerContent=0x7f0c001a;
-        public static final int container_timestamp=0x7f0c0015;
-        public static final int container_title=0x7f0c0013;
-        public static final int content=0x7f0c0016;
-        public static final int emptystub=0x7f0c0003;
-        public static final int etLocationInterval=0x7f0c000f;
-        public static final int inner_frame=0x7f0c0018;
-        public static final int listView=0x7f0c0005;
-        public static final int listview=0x7f0c0004;
-        public static final int next_button=0x7f0c001f;
+        public static final int action_settings=0x7f0c0022;
+        public static final int action_sync=0x7f0c0021;
+        public static final int arrow=0x7f0c001c;
+        public static final int back_button=0x7f0c001e;
+        public static final int btnLastLoc=0x7f0c000d;
+        public static final int btnRequestLocationIntent=0x7f0c0013;
+        public static final int btnStartRequest=0x7f0c000e;
+        public static final int button_bar=0x7f0c001d;
+        public static final int containerContent=0x7f0c001b;
+        public static final int container_timestamp=0x7f0c0016;
+        public static final int container_title=0x7f0c0014;
+        public static final int content=0x7f0c0017;
+        public static final int emptystub=0x7f0c0004;
+        public static final int etLocationInterval=0x7f0c0010;
+        public static final int inner_frame=0x7f0c0019;
+        public static final int listView=0x7f0c0006;
+        public static final int listview=0x7f0c0005;
+        public static final int next_button=0x7f0c0020;
         public static final int pager=0x7f0c0000;
-        public static final int skip_button=0x7f0c001e;
-        public static final int subtitle=0x7f0c0019;
-        public static final int textView1=0x7f0c000e;
-        public static final int textView2=0x7f0c0011;
-        public static final int timestamp=0x7f0c0017;
-        public static final int title=0x7f0c0014;
-        public static final int tvResult=0x7f0c0009;
-        public static final int tvResult1=0x7f0c0001;
-        public static final int tvResult2=0x7f0c0002;
-        public static final int txtConnectionStatus=0x7f0c000a;
-        public static final int txtLastKnownLoc=0x7f0c000b;
-        public static final int txtLocationRequest=0x7f0c0010;
-        public static final int xbox=0x7f0c0006;
-        public static final int ybox=0x7f0c0007;
-        public static final int zbox=0x7f0c0008;
+        public static final int skip_button=0x7f0c001f;
+        public static final int splashLayout=0x7f0c0001;
+        public static final int subtitle=0x7f0c001a;
+        public static final int textView1=0x7f0c000f;
+        public static final int textView2=0x7f0c0012;
+        public static final int timestamp=0x7f0c0018;
+        public static final int title=0x7f0c0015;
+        public static final int tvResult=0x7f0c000a;
+        public static final int tvResult1=0x7f0c0002;
+        public static final int tvResult2=0x7f0c0003;
+        public static final int txtConnectionStatus=0x7f0c000b;
+        public static final int txtLastKnownLoc=0x7f0c000c;
+        public static final int txtLocationRequest=0x7f0c0011;
+        public static final int xbox=0x7f0c0007;
+        public static final int ybox=0x7f0c0008;
+        public static final int zbox=0x7f0c0009;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080001;
@@ -111,131 +115,137 @@ public final class R {
         public static final int activity_sensor_accelerometer=0x7f030004;
         public static final int activity_sensor_barometer=0x7f030005;
         public static final int activity_sensor_location=0x7f030006;
-        public static final int activity_view=0x7f030007;
-        public static final int fragment_launchpad=0x7f030008;
-        public static final int listview_feed_item=0x7f030009;
-        public static final int listview_recent_feed_item=0x7f03000a;
-        public static final int preference_list_fragment=0x7f03000b;
+        public static final int activity_splash=0x7f030007;
+        public static final int activity_view=0x7f030008;
+        public static final int fragment_launchpad=0x7f030009;
+        public static final int listview_feed_item=0x7f03000a;
+        public static final int listview_recent_feed_item=0x7f03000b;
+        public static final int preference_list_fragment=0x7f03000c;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;
     }
     public static final class string {
-        public static final int action_settings=0x7f090001;
-        public static final int activity_name_main=0x7f090003;
-        public static final int activity_name_view=0x7f090004;
-        public static final int activity_title_sensor=0x7f090007;
-        public static final int activity_title_sensor_barometer=0x7f090008;
-        public static final int activity_title_settings=0x7f090006;
+        public static final int action_settings=0x7f090003;
+        /**  sync 
+         */
+        public static final int action_sync=0x7f090002;
         /**  activity name 
          */
-        public static final int activity_title_settings_configure_sensor=0x7f090005;
+        public static final int activity_name_main=0x7f090006;
+        public static final int activity_name_view=0x7f090007;
+        public static final int activity_title_sensor=0x7f09000a;
+        public static final int activity_title_sensor_barometer=0x7f09000b;
+        public static final int activity_title_settings=0x7f090009;
+        public static final int activity_title_settings_configure_sensor=0x7f090008;
         public static final int app_name=0x7f090000;
+        public static final int app_name_alias=0x7f090001;
         /**   Strings for possible PreferenceActivity Back/Next buttons 
          */
-        public static final int back_button_label=0x7f09003e;
-        public static final int hello_world=0x7f090002;
-        public static final int next_button_label=0x7f09003f;
-        public static final int pref_=0x7f090033;
-        public static final int pref_configure_sensor_setting=0x7f09003d;
-        public static final int pref_configure_sensor_setting_summary=0x7f090036;
-        public static final int pref_send_report=0x7f090034;
-        public static final int pref_send_report_summary=0x7f090035;
-        public static final int pref_sync_frequency=0x7f090037;
-        public static final int pref_sync_frequency_summary=0x7f090038;
+        public static final int back_button_label=0x7f090041;
+        public static final int next_button_label=0x7f090042;
+        public static final int pref_=0x7f090036;
+        public static final int pref_configure_sensor_setting=0x7f090040;
+        public static final int pref_configure_sensor_setting_summary=0x7f090039;
+        public static final int pref_send_report=0x7f090037;
+        public static final int pref_send_report_summary=0x7f090038;
+        public static final int pref_sync_frequency=0x7f09003a;
+        public static final int pref_sync_frequency_summary=0x7f09003b;
         /**  1 
          */
-        public static final int pref_type_accelerometer=0x7f09000b;
-        public static final int pref_type_accelerometer_summary=0x7f09000c;
+        public static final int pref_type_accelerometer=0x7f09000e;
+        public static final int pref_type_accelerometer_summary=0x7f09000f;
         /**  1 
          */
-        public static final int pref_type_all_sensor=0x7f090009;
-        public static final int pref_type_all_sensor_summary=0x7f09000a;
+        public static final int pref_type_all_sensor=0x7f09000c;
+        public static final int pref_type_all_sensor_summary=0x7f09000d;
         /**  13 
          */
-        public static final int pref_type_ambient_temperature=0x7f090023;
-        public static final int pref_type_ambient_temperature_summary=0x7f090024;
+        public static final int pref_type_ambient_temperature=0x7f090026;
+        public static final int pref_type_ambient_temperature_summary=0x7f090027;
         /**  15 
          */
-        public static final int pref_type_game_rotation_vector=0x7f090027;
-        public static final int pref_type_game_rotation_vector_summary=0x7f090028;
+        public static final int pref_type_game_rotation_vector=0x7f09002a;
+        public static final int pref_type_game_rotation_vector_summary=0x7f09002b;
         /**  20 
          */
-        public static final int pref_type_geomagnetic_rotation_vector=0x7f090031;
-        public static final int pref_type_geomagnetic_rotation_vector_summary=0x7f090032;
+        public static final int pref_type_geomagnetic_rotation_vector=0x7f090034;
+        public static final int pref_type_geomagnetic_rotation_vector_summary=0x7f090035;
         /**  9 
          */
-        public static final int pref_type_gravity=0x7f09001b;
-        public static final int pref_type_gravity_summary=0x7f09001c;
+        public static final int pref_type_gravity=0x7f09001e;
+        public static final int pref_type_gravity_summary=0x7f09001f;
         /**  4 
          */
-        public static final int pref_type_gyroscope=0x7f090011;
-        public static final int pref_type_gyroscope_summary=0x7f090012;
+        public static final int pref_type_gyroscope=0x7f090014;
+        public static final int pref_type_gyroscope_summary=0x7f090015;
         /**  16 
          */
-        public static final int pref_type_gyroscope_uncalibrated=0x7f090029;
-        public static final int pref_type_gyroscope_uncalibrated_summary=0x7f09002a;
+        public static final int pref_type_gyroscope_uncalibrated=0x7f09002c;
+        public static final int pref_type_gyroscope_uncalibrated_summary=0x7f09002d;
         /**  5 
          */
-        public static final int pref_type_light=0x7f090013;
-        public static final int pref_type_light_summary=0x7f090014;
+        public static final int pref_type_light=0x7f090016;
+        public static final int pref_type_light_summary=0x7f090017;
         /**  10 
          */
-        public static final int pref_type_linear_acceleration=0x7f09001d;
-        public static final int pref_type_linear_acceleration_summary=0x7f09001e;
+        public static final int pref_type_linear_acceleration=0x7f090020;
+        public static final int pref_type_linear_acceleration_summary=0x7f090021;
         /**  2 
          */
-        public static final int pref_type_magnetic_field=0x7f09000d;
-        public static final int pref_type_magnetic_field_summary=0x7f09000e;
+        public static final int pref_type_magnetic_field=0x7f090010;
+        public static final int pref_type_magnetic_field_summary=0x7f090011;
         /**  14 
          */
-        public static final int pref_type_magnetic_field_uncalibrated=0x7f090025;
-        public static final int pref_type_magnetic_field_uncalibrated_summary=0x7f090026;
+        public static final int pref_type_magnetic_field_uncalibrated=0x7f090028;
+        public static final int pref_type_magnetic_field_uncalibrated_summary=0x7f090029;
         /**  3 
          */
-        public static final int pref_type_orientation=0x7f09000f;
-        public static final int pref_type_orientation_summary=0x7f090010;
+        public static final int pref_type_orientation=0x7f090012;
+        public static final int pref_type_orientation_summary=0x7f090013;
         /**  6 
          */
-        public static final int pref_type_pressure=0x7f090015;
-        public static final int pref_type_pressure_summary=0x7f090016;
+        public static final int pref_type_pressure=0x7f090018;
+        public static final int pref_type_pressure_summary=0x7f090019;
         /**  8 
          */
-        public static final int pref_type_proximity=0x7f090019;
-        public static final int pref_type_proximity_summary=0x7f09001a;
+        public static final int pref_type_proximity=0x7f09001c;
+        public static final int pref_type_proximity_summary=0x7f09001d;
         /**  12 
          */
-        public static final int pref_type_relative_humidity=0x7f090021;
-        public static final int pref_type_relative_humidity_summary=0x7f090022;
+        public static final int pref_type_relative_humidity=0x7f090024;
+        public static final int pref_type_relative_humidity_summary=0x7f090025;
         /**  11 
          */
-        public static final int pref_type_rotation_vector=0x7f09001f;
-        public static final int pref_type_rotation_vector_summary=0x7f090020;
+        public static final int pref_type_rotation_vector=0x7f090022;
+        public static final int pref_type_rotation_vector_summary=0x7f090023;
         /**  17 
          */
-        public static final int pref_type_significant_motion=0x7f09002b;
-        public static final int pref_type_significant_motion_summary=0x7f09002c;
+        public static final int pref_type_significant_motion=0x7f09002e;
+        public static final int pref_type_significant_motion_summary=0x7f09002f;
         /**  19 
          */
-        public static final int pref_type_step_counter=0x7f09002f;
-        public static final int pref_type_step_counter_summary=0x7f090030;
+        public static final int pref_type_step_counter=0x7f090032;
+        public static final int pref_type_step_counter_summary=0x7f090033;
         /**  18 
          */
-        public static final int pref_type_step_detector=0x7f09002d;
-        public static final int pref_type_step_detector_summary=0x7f09002e;
+        public static final int pref_type_step_detector=0x7f090030;
+        public static final int pref_type_step_detector_summary=0x7f090031;
         /**  7 
          */
-        public static final int pref_type_temperature=0x7f090017;
-        public static final int pref_type_temperature_summary=0x7f090018;
-        public static final int pref_update_setting=0x7f09003c;
+        public static final int pref_type_temperature=0x7f09001a;
+        public static final int pref_type_temperature_summary=0x7f09001b;
+        public static final int pref_update_setting=0x7f09003f;
         /**  App Profile 
          */
-        public static final int pref_user_name=0x7f090039;
-        public static final int pref_user_name_summary=0x7f09003a;
-        public static final int pref_user_profile=0x7f09003b;
+        public static final int pref_user_name=0x7f09003c;
+        public static final int pref_user_name_summary=0x7f09003d;
+        public static final int pref_user_profile=0x7f09003e;
         /**  Optional button to Skip a PreferenceActivity [CHAR LIMIT=20] 
          */
-        public static final int skip_button_label=0x7f090040;
+        public static final int skip_button_label=0x7f090043;
+        public static final int sync_complete_message=0x7f090005;
+        public static final int sync_dialog_message=0x7f090004;
     }
     public static final class style {
         /** 
@@ -264,6 +274,7 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0a0001;
+        public static final int Theme_Transparent=0x7f0a0004;
         public static final int card_inner=0x7f0a0003;
         public static final int card_outer=0x7f0a0002;
     }

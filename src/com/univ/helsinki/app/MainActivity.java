@@ -20,30 +20,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ActionBar;
-import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.Service;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -57,6 +61,8 @@ import com.univ.helsinki.app.util.Constant;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
+	 // Splash screen timer
+    private static int SPLASH_TIME_OUT = 7000;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the
      * three primary sections of the app. We use a {@link android.support.v4.app.FragmentPagerAdapter}
@@ -75,7 +81,25 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        getActionBar().hide();
+        
+        {
+        	hideTitle();
+        }
+        
         setContentView(R.layout.activity_main);
+        
+        final ViewGroup splashLayout =  (ViewGroup) findViewById(R.id.splashLayout);
+		
+		new Handler().postDelayed(new Runnable() {
+			 
+            @Override
+            public void run() {
+            	activateSplashScreen(splashLayout);
+            }
+        }, SPLASH_TIME_OUT);
         
         FeedResource.getInstance().inti(this);
         
@@ -372,6 +396,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             case R.id.action_settings:
             	startActivity(new Intent(this, SettingPreferenceActivity.class));
             return true;
+            case R.id.action_sync:
+            	startActivity(new Intent(this, SensorEvaluator.class));
+            return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -394,4 +421,75 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		FeedResource.getInstance().destory();
 		super.onDestroy();
 	}
+	
+	/**
+	 * Handling of Splash screen
+	 */
+	private void activateSplashScreen(final View view){
+		// UP to DOWN Animation
+		final float direction =  -1 ;
+		final float yDelta =  (getScreenHeight() - (2 * view.getHeight()));
+		
+		final Animation animation = new TranslateAnimation(0,0,0, yDelta * direction);
+
+		animation.setDuration(1500);
+
+		animation.setAnimationListener(new AnimationListener() {
+
+			public void onAnimationStart(Animation animation) {
+				getActionBar().show();
+				
+			}
+
+			public void onAnimationRepeat(Animation animation) {
+			}
+
+			public void onAnimationEnd(Animation animation) {
+				view.setVisibility(View.INVISIBLE);
+				
+				showTitle();
+				 
+				View titleView = getWindow().findViewById(android.R.id.title);
+			    if (titleView != null) {
+			        ViewParent parent = titleView.getParent();
+			        if (parent != null && (parent instanceof View)) {
+			         View parentView = (View)parent;
+			         parentView.setVisibility(View.VISIBLE);
+			        }
+			    }
+			}
+		});
+
+		view.startAnimation(animation);
+	}
+	
+	private float getScreenHeight() {
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		return (float) displaymetrics.heightPixels;
+	}
+
+	public void hideTitle() {
+        try {
+            ((View) findViewById(android.R.id.title).getParent())
+                    .setVisibility(View.GONE);
+        } catch (Exception e) {
+        }
+        
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().clearFlags(
+                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+    }
+
+    public void showTitle() {
+        try {
+            ((View) findViewById(android.R.id.title).getParent())
+                    .setVisibility(View.VISIBLE);
+        } catch (Exception e) {
+        }
+        
+        getWindow().addFlags(
+                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
 }
