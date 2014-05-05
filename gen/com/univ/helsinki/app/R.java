@@ -9,6 +9,7 @@ package com.univ.helsinki.app;
 
 public final class R {
     public static final class array {
+        public static final int listitem_menu_array=0x7f050002;
         public static final int syncFrequency=0x7f050000;
         public static final int syncFrequencyValues=0x7f050001;
     }

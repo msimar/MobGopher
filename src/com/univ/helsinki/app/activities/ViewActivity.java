@@ -42,7 +42,7 @@ public class ViewActivity extends Activity {
 		} else {
 			mListItemIndex = extras.getInt(EXTRAS_ROW_ID);
 			
-			Toast.makeText(this, "index: " + mListItemIndex, Toast.LENGTH_SHORT).show();
+//			Toast.makeText(this, "index: " + mListItemIndex, Toast.LENGTH_SHORT).show();
 
 			FeedResource.getInstance().inti(this);
 			List<Feed> mFeedList = FeedResource.getInstance().getAllFeed();

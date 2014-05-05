@@ -36,7 +36,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
-import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -52,7 +53,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.univ.helsinki.app.activities.SettingPreferenceActivity;
 import com.univ.helsinki.app.activities.ViewActivity;
@@ -302,8 +302,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					Intent intent = new Intent(MainActivity.this, ViewActivity.class);
 					intent.putExtra(ViewActivity.EXTRAS_ROW_ID, position);
 					startActivity(intent);
+					// FeedResource.getInstance().removeFeed(position);
 				}
 			});
+    		
+    		getActivity().registerForContextMenu(listview);
     		
             return rootView;
         }
@@ -370,6 +373,26 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     		
             return rootView;
         }
+        
+        @Override
+        public void onResume() {
+        	// TODO Auto-generated method stub
+        	
+        	List<SensorFeed> mtempAllowedSensorFeedList = new ArrayList<SensorFeed>();
+    		// update the list over here.. to avoid empty shell
+    		for (SensorFeed sensor : FeedResource.getInstance().getSensorFeedList()) {
+    			
+    			boolean isChecked = PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+    				.getBoolean(sensor.getSensorKey(), false);
+    			
+    			if(isChecked)
+    				mtempAllowedSensorFeedList.add(sensor);
+			}
+    		// update the list with new created list
+    		mSensorFeedAdapter.setFeedList(mtempAllowedSensorFeedList);
+    		
+        	super.onResume();
+        }
 
 //		@Override
 //		public void onFocusChange(View v, boolean hasFocus) {
@@ -378,24 +401,40 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 //		}
     }
 
-    /**
-     * A dummy fragment representing a section of the app, but that simply displays dummy text.
-     */
-    public static class DummySectionFragment extends Fragment {
+    @Override
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+		if (v.getId() == R.id.listview) {
+			AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
 
-        public static final String ARG_SECTION_NUMBER = "section_number";
+			String[] menuItems = getResources().getStringArray(R.array.listitem_menu_array);
+			for (int i = 0; i < menuItems.length; i++) {
+				menu.add(Menu.NONE, i, i, menuItems[i]);
+			}
+		}
+	}
+    
+    @Override
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) 
+				item.getMenuInfo();
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            /*View rootView = inflater.inflate(R.layout.fragment_section_dummy, container, false);
-            Bundle args = getArguments();
-            ((TextView) rootView.findViewById(android.R.id.text1)).setText(
-                    getString(R.string.dummy_section_text, args.getInt(ARG_SECTION_NUMBER)));
-            return rootView;*/
-        	return null;
-        }
-    }
+		int menuItemIndex = item.getItemId();
+
+		String[] menuItems = getResources().getStringArray(R.array.listitem_menu_array);
+
+		String menuItemName = menuItems[menuItemIndex];
+
+		if (menuItemName.equalsIgnoreCase("Delete")) {
+			
+			FeedResource.getInstance().removeFeed(info.position);
+			
+		}else if (menuItemName.contains("View")) {
+			Intent intent = new Intent(MainActivity.this, ViewActivity.class);
+			intent.putExtra(ViewActivity.EXTRAS_ROW_ID, info.position);
+			startActivity(intent);
+		} 
+		return true;
+	}
     
     public void getAllDeviceSensorList(){
     	SensorManager sensorManager;

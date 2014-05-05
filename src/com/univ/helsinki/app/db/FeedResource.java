@@ -103,6 +103,7 @@ public class FeedResource {
 			mDatasource.delete(id);
 		}
 		mFeedList.remove(location);
+		this.mAdapter.notifyDataChanged();
 	}
 	
 	public Feed createFeed(String title, String content) {
