@@ -29,7 +29,7 @@
             android:key="prefUsername"
             android:selectable="false"
             android:summary="@string/pref_user_name_summary"
-            android:title="@string/pref_user_name" />
+            android:title="@string/app_name" />
         <EditTextPreference
             android:key="prefCreatedBy"
             android:selectable="false"

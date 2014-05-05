@@ -22,7 +22,9 @@ import java.util.List;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -34,6 +36,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,7 +65,7 @@ import com.univ.helsinki.app.util.Constant;
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
 	 // Splash screen timer
-    private static int SPLASH_TIME_OUT = 7000;
+    private static int SPLASH_TIME_OUT = 4000;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the
      * three primary sections of the app. We use a {@link android.support.v4.app.FragmentPagerAdapter}
@@ -91,9 +94,29 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         
         setContentView(R.layout.activity_main);
         
+        SharedPreferences activityPrefs = getSharedPreferences(
+        		Constant.SHARED_PREFS_FILENAME, 
+        		Context. MODE_PRIVATE	);
+
+        /*if (activityPrefs.getBoolean("is_first_time", true)) {
+            // record the fact that the app has been started at least once
+        	activityPrefs.edit().putBoolean("is_first_time", false).commit(); 
+        	
+        	final ViewGroup splashLayout =  (ViewGroup) findViewById(R.id.splashLayout);
+        	
+        	new Handler().postDelayed(new Runnable() {
+   			 
+                @Override
+                public void run() {
+                	activateSplashScreen(splashLayout);
+                }
+            }, SPLASH_TIME_OUT);
+        	
+        } */
+        
         final ViewGroup splashLayout =  (ViewGroup) findViewById(R.id.splashLayout);
-		
-		new Handler().postDelayed(new Runnable() {
+    	
+    	new Handler().postDelayed(new Runnable() {
 			 
             @Override
             public void run() {
@@ -161,7 +184,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 switch (position) {
                 	case 0:{
                 		// on focus when first fragment
-                		Toast.makeText(getApplicationContext(), "onPageSelected :" + position, Toast.LENGTH_SHORT).show();
+                		//Toast.makeText(getApplicationContext(), "onPageSelected :" + position, Toast.LENGTH_SHORT).show();
                 		
                 		List<SensorFeed> mtempAllowedSensorFeedList = new ArrayList<SensorFeed>();
                 		// update the list over here.. to avoid empty shell
@@ -419,6 +442,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	protected void onDestroy() {
 		FeedResource.getInstance().destory();
+		
+		SharedPreferences activityPrefs = getSharedPreferences(
+        		Constant.SHARED_PREFS_FILENAME, 
+        		Context. MODE_PRIVATE	);
+
+        activityPrefs.edit().putBoolean("is_first_time", true).commit(); 
+        	
 		super.onDestroy();
 	}
 	

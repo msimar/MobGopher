@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class Constant {
+	
+	public static final String SHARED_PREFS_FILENAME = "MobGrapherPrefs";
+		
 	public static final String PREF_TYPE_ALL_SENSOR_KEY = "pref_type_all_sensor_key";
 	
 	public static final String PREF_TYPE_ACCELEROMETER_KEY = "pref_type_accelerometer_key";
