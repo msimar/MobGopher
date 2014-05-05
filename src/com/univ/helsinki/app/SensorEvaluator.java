@@ -59,6 +59,8 @@ public 	class 		SensorEvaluator
 	
 	private ProgressDialog mSyncDialog;
 	
+	private boolean isAccelerometerAdded = false;
+	
 	/**
 	 * Location Handling
 	 */
@@ -100,8 +102,6 @@ public 	class 		SensorEvaluator
 		}
 		else{
 			Toast.makeText(context, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
-		
-			
 		}
 	}
 
@@ -126,6 +126,30 @@ public 	class 		SensorEvaluator
 				SensorManager.SENSOR_DELAY_NORMAL);
 		
 		Log.i(TAG,"AndroidSensor.TYPE_ACCELEROMETER supported :" + isSupported);
+		
+		isSupported = mSensorManager.registerListener(mSensorListener,
+				mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT),
+				SensorManager.SENSOR_DELAY_NORMAL);
+		
+		Log.i(TAG,"AndroidSensor.TYPE_LIGHT supported :" + isSupported);
+		
+		isSupported = mSensorManager.registerListener(mSensorListener,
+				mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE),
+				SensorManager.SENSOR_DELAY_NORMAL);
+		
+		Log.i(TAG,"AndroidSensor.TYPE_GYROSCOPE supported :" + isSupported);
+		
+		isSupported = mSensorManager.registerListener(mSensorListener,
+				mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED),
+				SensorManager.SENSOR_DELAY_NORMAL);
+		
+		Log.i(TAG,"AndroidSensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED supported :" + isSupported);
+		
+		isSupported = mSensorManager.registerListener(mSensorListener,
+				mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),
+				SensorManager.SENSOR_DELAY_NORMAL);
+		
+		Log.i(TAG,"AndroidSensor.TYPE_MAGNETIC_FIELD supported :" + isSupported);
 	}
 
 	@Override
@@ -176,7 +200,7 @@ public 	class 		SensorEvaluator
 				object.setName("Sensor.TYPE_PRESSURE");
 				object.setStatus(true);
 				object.setTypeValue(Integer.toString(Sensor.TYPE_PRESSURE));
-				object.setVendor("");
+				object.setVendor(event.sensor.getVendor());
 				
 				Map<String, Float> valueMap = new HashMap<String, Float>();
 				valueMap.put("pressure", pressure_value);
@@ -199,7 +223,7 @@ public 	class 		SensorEvaluator
 				object.setName("Sensor.TYPE_AMBIENT_TEMPERATURE");
 				object.setStatus(true);
 				object.setTypeValue(Integer.toString(Sensor.TYPE_AMBIENT_TEMPERATURE));
-				object.setVendor("");
+				object.setVendor(event.sensor.getVendor());
 				
 				Map<String, Float> valueMap = new HashMap<String, Float>();
 				valueMap.put("ambient_temperature", temperature_value);
@@ -208,7 +232,7 @@ public 	class 		SensorEvaluator
 				
 				mSensorStream.getSensors().add(object);
 				
-			}else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+			}else if ( !isAccelerometerAdded && event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 				float[] values = event.values;
 //				Log.i(TAG,"Accel X: " + values[0]);
 //				Log.i(TAG,"Accel Y: " + values[1]);
@@ -220,7 +244,7 @@ public 	class 		SensorEvaluator
 				object.setName("Sensor.TYPE_ACCELEROMETER");
 				object.setStatus(true);
 				object.setTypeValue(Integer.toString(Sensor.TYPE_ACCELEROMETER));
-				object.setVendor("");
+				object.setVendor(event.sensor.getVendor());
 				
 				Map<String, Float> valueMap = new HashMap<String, Float>();
 				valueMap.put("accelerometer_x", values[0]);
@@ -230,9 +254,137 @@ public 	class 		SensorEvaluator
 				object.getValues().add(valueMap);
 				
 				mSensorStream.getSensors().add(object);
+				
+				isAccelerometerAdded = !isAccelerometerAdded;
+			}else if ( event.sensor.getType() == Sensor.TYPE_LIGHT) {
+				float[] values = event.values;
+				
+				SensorUnit object = new SensorUnit();
+				object.setName("Sensor.TYPE_LIGHT");
+				object.setStatus(true);
+				object.setTypeValue(Integer.toString(Sensor.TYPE_LIGHT));
+				object.setVendor(event.sensor.getVendor());
+				
+				Map<String, Float> valueMap = new HashMap<String, Float>();
+				valueMap.put("light", values[0]);
+				
+				object.getValues().add(valueMap);
+				
+				mSensorStream.getSensors().add(object);
+			} else if (  event.sensor.getType() == Sensor.TYPE_GYROSCOPE) {
+				Map<String, Float> valueMap = new HashMap<String, Float>();
+				// This timestep's delta rotation to be multiplied by the current rotation
+		          // after computing it from the gyro sample data.
+		          if (timestamp != 0) {
+		              final float dT = (event.timestamp - timestamp) * NS2S;
+		              // Axis of the rotation sample, not normalized yet.
+		              float axisX = event.values[0];
+		              float axisY = event.values[1];
+		              float axisZ = event.values[2];
+
+		              // Calculate the angular speed of the sample
+		              float omegaMagnitude = (float) Math.sqrt(axisX*axisX + axisY*axisY + axisZ*axisZ);
+
+		              // Normalize the rotation vector if it's big enough to get the axis
+//		              if (omegaMagnitude > EPSILON) {
+//		                  axisX /= omegaMagnitude;
+//		                  axisY /= omegaMagnitude;
+//		                  axisZ /= omegaMagnitude;
+//		              }
+
+		              // Integrate around this axis with the angular speed by the timestep
+		              // in order to get a delta rotation from this sample over the timestep
+		              // We will convert this axis-angle representation of the delta rotation
+		              // into a quaternion before turning it into the rotation matrix.
+//		              float thetaOverTwo = omegaMagnitude * dT / 2.0f;
+//		              float sinThetaOverTwo = sin(thetaOverTwo);
+//		              float cosThetaOverTwo = cos(thetaOverTwo);
+//		              deltaRotationVector[0] = sinThetaOverTwo * axisX;
+//		              deltaRotationVector[1] = sinThetaOverTwo * axisY;
+//		              deltaRotationVector[2] = sinThetaOverTwo * axisZ;
+//		              deltaRotationVector[3] = cosThetaOverTwo;
+		              
+		              valueMap.put("axisX", axisX);
+						valueMap.put("axisY", axisY);
+						valueMap.put("axisZ", axisZ);
+		          }
+		          timestamp = event.timestamp;
+//		          float[] deltaRotationMatrix = new float[9];
+//		          SensorManager.getRotationMatrixFromVector(deltaRotationMatrix, deltaRotationVector);
+		          // User code should concatenate the delta rotation we computed with the current rotation
+		          // in order to get the updated rotation.
+		          // rotationCurrent = rotationCurrent * deltaRotationMatrix;
+				
+				SensorUnit object = new SensorUnit();
+				object.setName("Sensor.TYPE_GYROSCOPE");
+				object.setStatus(true);
+				object.setTypeValue(Integer.toString(Sensor.TYPE_GYROSCOPE));
+				object.setVendor(event.sensor.getVendor());
+				
+				
+				valueMap.put("timestamp", timestamp);
+				
+				object.getValues().add(valueMap);
+				
+				mSensorStream.getSensors().add(object);
+				
+				
+			} else if ( event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED) {
+				float[] values = event.values;
+				
+				SensorUnit object = new SensorUnit();
+				object.setName("Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED");
+				object.setStatus(true);
+				object.setTypeValue(Integer.toString(Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED));
+				object.setVendor(event.sensor.getVendor());
+				
+				Map<String, Float> valueMap = new HashMap<String, Float>();
+				valueMap.put("x_uncalib", values[0]);
+				valueMap.put("y_uncalib", values[1]);
+				valueMap.put("z_uncalib", values[2]);
+				
+				valueMap.put("x_bias", values[3]);
+				valueMap.put("y_bias", values[4]);
+				valueMap.put("z_bias", values[5]);
+				
+				object.getValues().add(valueMap);
+				
+				mSensorStream.getSensors().add(object);
+			}else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD){
+				
+				SensorUnit object = new SensorUnit();
+				object.setName("Sensor.TYPE_MAGNETIC_FIELD");
+				object.setStatus(true);
+				object.setTypeValue(Integer.toString(Sensor.TYPE_MAGNETIC_FIELD));
+				object.setVendor(event.sensor.getVendor());
+				
+				Map<String, Float> valueMap = new HashMap<String, Float>();
+				
+				for(float value : event.values ){
+					valueMap.put("value", value);
+				}
+				object.getValues().add(valueMap);
+				
+				mSensorStream.getSensors().add(object);
 			}
+			      
+//		    if (mGravity != null && mGeomagnetic != null) {
+//		      float R[] = new float[9];
+//		      float I[] = new float[9];
+//		      boolean success = SensorManager.getRotationMatrix(R, I, mGravity, mGeomagnetic);
+//		      if (success) {
+//		        float orientation[] = new float[3];
+//		        SensorManager.getOrientation(R, orientation);
+//		        azimut = orientation[0]; // orientation contains: azimut, pitch and roll
+//		      }
+//		    }
 		}
 	};
+	
+	private float[] mGravity;
+	private float[] mGeomagnetic;
+	private static final float NS2S = 1.0f / 1000000000.0f;
+    private float timestamp;
 
 	@Override
 	public void onConnected(Bundle connectionHint) {
