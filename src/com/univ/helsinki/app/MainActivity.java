@@ -342,18 +342,18 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     			}
     		});
 
-    		List<SensorFeed> mtempAllowedSensorFeedList = new ArrayList<SensorFeed>();
-    		// update the list over here.. to avoid empty shell
-    		for (SensorFeed sensor : FeedResource.getInstance().getSensorFeedList()) {
-    			
-    			boolean isChecked = PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
-    				.getBoolean(sensor.getSensorKey(), false);
-    			
-    			if(isChecked)
-    				mtempAllowedSensorFeedList.add(sensor);
-			}
+//    		List<SensorFeed> mtempAllowedSensorFeedList = new ArrayList<SensorFeed>();
+//    		// update the list over here.. to avoid empty shell
+//    		for (SensorFeed sensor : FeedResource.getInstance().getSensorFeedList()) {
+//    			
+//    			boolean isChecked = PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+//    				.getBoolean(sensor.getSensorKey(), false);
+//    			
+//    			if(isChecked)
+//    				mtempAllowedSensorFeedList.add(sensor);
+//			}
     		// update the list with new created list
-    		mSensorFeedAdapter.setFeedList(mtempAllowedSensorFeedList);
+    		mSensorFeedAdapter.setFeedList(FeedResource.getInstance().getSensorFeedList());
     		
     		mListview.setAdapter(mSensorFeedAdapter);
     		

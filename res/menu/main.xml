@@ -12,7 +12,7 @@
         android:orderInCategory="101"
         android:icon="@drawable/cloud_list_64"
         android:showAsAction="always"
-        android:title="@string/action_sync"/>
+        android:title="@string/action_add_feed"/>
     
     <item
         android:id="@+id/action_settings"
