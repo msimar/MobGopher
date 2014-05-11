@@ -1,0 +1,29 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <header
+        android:fragment="com.univ.helsinki.app.activities.SettingManageEndpoint$FeedFragment"
+        android:icon="@drawable/ic_sync_blue_48"
+        android:summary="Create feed endpoints to synchronize sensing"
+        android:title="Create Feed" />
+    <header
+        android:icon="@drawable/ic_sync_blue_48"
+        android:summary="@string/pref_summary_connection_mode"
+        android:title="@string/pref_title_connection_mode" >
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/syncConnectionMode"
+            android:entryValues="@array/syncConnectionModeValues"
+            android:key="@string/pref_key_feed_connection_mode"
+            android:summary="@string/pref_summary_connection_mode"
+            android:title="@string/pref_title_connection_mode" />
+    </header>
+    <header
+        android:icon="@drawable/ic_sync_blue_48"
+        android:summary="Launches an Intent."
+        android:title="Intent" >
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="http://www.android.com" />
+    </header>
+
+</preference-headers>

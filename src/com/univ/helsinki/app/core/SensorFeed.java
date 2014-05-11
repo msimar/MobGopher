@@ -4,6 +4,7 @@ import java.util.Map;
 
 import android.content.Context;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.univ.helsinki.app.db.FeedResource;
 import com.univ.helsinki.app.util.Constant;

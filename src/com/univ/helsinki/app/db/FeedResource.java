@@ -8,6 +8,7 @@ import java.util.Map;
 import android.annotation.SuppressLint;
 import android.content.Context;
 
+import com.univ.helsinki.app.adapter.FeedEndPointAdapter;
 import com.univ.helsinki.app.adapter.RecentActivityAdapter;
 import com.univ.helsinki.app.core.DeviceFeed;
 import com.univ.helsinki.app.core.SensorFeed;
@@ -21,19 +22,25 @@ public class FeedResource {
 	
 	private DeviceFeed mDeviceFeed;
 	
-	private List<Feed> mFeedList;
+	private List<Feed> mRecentFeedList;
+	private List<FeedEndPoint> mFeedEndPointList;
 	
-	private RecentActivityDataSource mDatasource;
+	private DataSourceRecentFeed mDatasourceRecentFeed;
+	private DataSourceFeedEndPoint mDatasourceFeedEndPoint;
 	
-	private RecentActivityAdapter mAdapter;
+	private RecentActivityAdapter mRecentAdapter;
+	private FeedEndPointAdapter mFeedEndPointAdapter;
 	
 	private static FeedResource INSTANCE;
 	
+	private Map<String,Boolean> mSelectedSensorMap = new HashMap<String,Boolean>();
+	
 	private FeedResource(){
 		
-		this.mFeedList = new ArrayList<Feed>();
+		this.mRecentFeedList = new ArrayList<Feed>();
+		this.setFeedEndPointList(new ArrayList<FeedEndPoint>());
 		
-		setmDeviceFeed(new DeviceFeed());
+		setDeviceFeed(new DeviceFeed());
 		
 		setSensorFeedList(new ArrayList<SensorFeed>());
 		
@@ -65,6 +72,16 @@ public class FeedResource {
 		return INSTANCE;
 	}
 	
+	/////////////////////////////////////////////////////
+	
+	private DatabaseHelper mDbHelper;
+	
+	public DatabaseHelper getDbHelper(){
+		return this.mDbHelper;
+	}
+	
+	/////////////////////////////////////////////////////
+	
 	public List<SensorFeed> getSensorFeedList() {
 		return mSensorFeedList;
 	}
@@ -73,66 +90,145 @@ public class FeedResource {
 		this.mSensorFeedList = sensorFeedList;
 	}
 	
-	public DeviceFeed getmDeviceFeed() {
+	public DeviceFeed getDeviceFeed() {
 		return mDeviceFeed;
 	}
 
-	private void setmDeviceFeed(DeviceFeed mDeviceFeed) {
+	private void setDeviceFeed(DeviceFeed mDeviceFeed) {
 		this.mDeviceFeed = mDeviceFeed;
 	}
 	
-	public void inti(Context context) {
-		this.mDatasource = new RecentActivityDataSource(context);
-		this.mDatasource.open();
-	}
+	/*
+	 * Manage Call for Recent Feeds
+	 */
 	
 	public List<Feed> getAllFeed(){
-		this.mFeedList = this.mDatasource.getAllFeeds();;
-		return this.mFeedList;
+		this.mRecentFeedList = this.mDatasourceRecentFeed.getAllRecentFeed();;
+		return this.mRecentFeedList;
 	}
 	
-	public void addFeed(int location, Feed feed){
-		this.mFeedList.add(location, feed);
-		this.mAdapter.notifyDataChanged();
+	public void addRecentFeed(int location, Feed feed){
+		this.mRecentFeedList.add(location, feed);
+		this.mRecentAdapter.notifyDataChanged();
 	}
 	
-	public void removeFeed(int location){
-		long id = this.mFeedList.get(location).getId();
+	public Feed createRecentFeed(String title, String content) {
+		return this.mDatasourceRecentFeed.createRecentFeed(title, content);
+	}
+	
+	public void removeRecentFeed(int location){
+		long id = this.mRecentFeedList.get(location).getId();
 		
-		if(mDatasource != null){
-			mDatasource.delete(id);
+		if(mDatasourceRecentFeed != null){
+			mDatasourceRecentFeed.delete(id);
 		}
-		mFeedList.remove(location);
-		this.mAdapter.notifyDataChanged();
+		this.mRecentFeedList.remove(location);
+		this.mRecentAdapter.notifyDataChanged();
 	}
 	
-	public Feed createFeed(String title, String content) {
-		return this.mDatasource.createFeed(title, content);
+	/////////////////////////////////////////////////////
+	
+	/*
+	 * Manage Call for Feed End Points
+	 */
+	public void createFeedEndPoint(FeedEndPoint feedEndPoint) {
+		this.mDatasourceFeedEndPoint.createFeedEndPoint(feedEndPoint);
 	}
 	
-	public void setRecentFeedAdapter(RecentActivityAdapter adapter) {
-		this.mAdapter = adapter;
+	public void removeFeedEndPoint(int location){
+		long id = this.mFeedEndPointList.get(location).getId();
+		
+		if(mDatasourceFeedEndPoint != null){
+			mDatasourceFeedEndPoint.delete(id);
+		}
+		mFeedEndPointList.remove(location);
+		this.mFeedEndPointAdapter.notifyDataChanged();
+	}
+	
+	public void addFeedEndPoint(FeedEndPoint endPoint){
+		// save to the list
+		this.mFeedEndPointList.add(endPoint);
+		// save to the db
+		this.createFeedEndPoint(endPoint);
+		// notify adapter
+		this.mFeedEndPointAdapter.notifyDataChanged();
+	}
+	
+	public List<FeedEndPoint> getAllFeedEndPoint(){
+		this.mFeedEndPointList = this.mDatasourceFeedEndPoint.getAllFeedEndPoint();;
+		return this.mFeedEndPointList;
+	}
+
+	public List<FeedEndPoint> getFeedEndPointList() {
+		return mFeedEndPointList;
+	}
+	
+	private void setFeedEndPointList(List<FeedEndPoint> mFeedEndPointList) {
+		this.mFeedEndPointList = mFeedEndPointList;
+	}
+	
+	/////////////////////////////////////////////////////
+	
+	public void destory(){
+		if(mDatasourceRecentFeed != null)
+			mDatasourceRecentFeed.close();
+		if(mDatasourceFeedEndPoint != null)
+			mDatasourceFeedEndPoint.close();
+		this.mRecentFeedList.clear();
+		this.mFeedEndPointList.clear();
+	}
+	
+	/**
+	 * Manage Datasource
+	 */
+	
+	public void inti(Context context) {
+		this.mDbHelper = new DatabaseHelper(context);
+		
+		this.mDatasourceRecentFeed = new DataSourceRecentFeed(this.mDbHelper);
+		this.mDatasourceRecentFeed.open();
+		
+		this.mDatasourceFeedEndPoint = new DataSourceFeedEndPoint(this.mDbHelper);
+		this.mDatasourceFeedEndPoint.open();
+		
 	}
 	
 	/**
 	 * Should be called in Activity#onresume()
 	 */
 	public void openDataSource(){
-		if(mDatasource != null)
-			mDatasource.open();
+		if(mDatasourceRecentFeed != null)
+			mDatasourceRecentFeed.open();
+		if(mDatasourceFeedEndPoint != null)
+			mDatasourceFeedEndPoint.open();
 	}
 	
 	/**
 	 * Should be called in Activity#onpause()
 	 */
 	public void closeDataSource(){
-		if(mDatasource != null)
-			mDatasource.close();
+		if(mDatasourceRecentFeed != null)
+			mDatasourceRecentFeed.close();
+		if(mDatasourceFeedEndPoint != null)
+			mDatasourceFeedEndPoint.close();
 	}
 	
-	public void destory(){
-		if(mDatasource != null)
-			mDatasource.close();
-		this.mFeedList.clear();
+	/**
+	 * Set Adapters for Recent and FeedEnd Point
+	 */
+	public void setRecentFeedAdapter(RecentActivityAdapter adapter) {
+		this.mRecentAdapter = adapter;
+	}
+	
+	public void setFeedEndPointAdapter(FeedEndPointAdapter adapter) {
+		this.mFeedEndPointAdapter = adapter;
+	}
+
+	public Map<String,Boolean> getSelectedSensorMap() {
+		return mSelectedSensorMap;
+	}
+
+	public void setSelectedSensorMap(Map<String,Boolean> mSelectedSensorMap) {
+		this.mSelectedSensorMap = mSelectedSensorMap;
 	}
 }

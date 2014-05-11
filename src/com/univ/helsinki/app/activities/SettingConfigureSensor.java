@@ -1,7 +1,9 @@
 package com.univ.helsinki.app.activities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.ActionBar;
 import android.content.Context;
@@ -27,6 +29,8 @@ public class SettingConfigureSensor extends PreferenceActivity {
 	private boolean isSensorListLoaded = false;
 	
 	private List<String> mAllSensorKey;
+	
+	private Map<String,Boolean> mSelectedSensorMap = new HashMap<String,Boolean>();
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,10 @@ public class SettingConfigureSensor extends PreferenceActivity {
             bindPreferenceSummaryToValue(findPreference(sensorFeed.getSensorKey()));
             
             this.mAllSensorKey.add(sensorFeed.getSensorKey());
+            
+            mSelectedSensorMap.put(sensorFeed.getSensorKey(), true);
+            
+            FeedResource.getInstance().setSelectedSensorMap(mSelectedSensorMap);
         }
         
         isSensorListLoaded = true;
@@ -95,6 +103,8 @@ public class SettingConfigureSensor extends PreferenceActivity {
 		@Override
 		public boolean onPreferenceChange(Preference preference, Object newValue) {
 
+			mSelectedSensorMap.put(preference.getKey(), true);
+			
 			Boolean prefValue = (Boolean) newValue;
 			
 			if (preference instanceof CheckBoxPreference) {
@@ -110,9 +120,7 @@ public class SettingConfigureSensor extends PreferenceActivity {
 							// checked the instance value
 							((CheckBoxPreference)findPreference(keyValue)).setChecked(true);
 							
-							// update the preference to recent value
-							PreferenceManager.getDefaultSharedPreferences(
-									preference.getContext()).getBoolean(keyValue, false);
+							mSelectedSensorMap.put(preference.getKey(), true);
 						}
 					}
 				} 

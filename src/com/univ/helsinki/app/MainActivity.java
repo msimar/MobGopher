@@ -21,12 +21,9 @@ import java.util.List;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -51,9 +48,11 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.univ.helsinki.app.activities.EndPointActivity;
 import com.univ.helsinki.app.activities.SettingPreferenceActivity;
 import com.univ.helsinki.app.activities.ViewActivity;
 import com.univ.helsinki.app.adapter.RecentActivityAdapter;
@@ -65,7 +64,7 @@ import com.univ.helsinki.app.util.Constant;
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
 	 // Splash screen timer
-    private static int SPLASH_TIME_OUT = 4000;
+    private static int SPLASH_TIME_OUT = 1;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the
      * three primary sections of the app. We use a {@link android.support.v4.app.FragmentPagerAdapter}
@@ -79,6 +78,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      * time.
      */
     ViewPager mViewPager;
+    
+    private ViewGroup splashLayout;
 
     private SensorFeedAdapter mSensorFeedAdapter;
     
@@ -114,15 +115,21 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         	
         } */
         
-        final ViewGroup splashLayout =  (ViewGroup) findViewById(R.id.splashLayout);
+        splashLayout =  (ViewGroup) findViewById(R.id.splashLayout);
+        
+        if(AppController.isFirstLoad){
+        	new Handler().postDelayed(new Runnable() {
+   			 
+                @Override
+                public void run() {
+                	activateSplashScreen(splashLayout);
+                }
+            }, SPLASH_TIME_OUT);
+        }else{
+        	splashLayout.setVisibility(View.GONE);
+        }
     	
-    	new Handler().postDelayed(new Runnable() {
-			 
-            @Override
-            public void run() {
-            	activateSplashScreen(splashLayout);
-            }
-        }, SPLASH_TIME_OUT);
+    	
         
         FeedResource.getInstance().inti(this);
         
@@ -132,34 +139,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
-        
-        Constant.sAllSensorPreferenceKeyMap.put(1, Constant.PREF_TYPE_ACCELEROMETER_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(2, Constant.PREF_TYPE_MAGNETIC_FIELD_KEY);
-        
-        Constant.sAllSensorPreferenceKeyMap.put(3, Constant.PREF_TYPE_ORIENTATION_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(4, Constant.PREF_TYPE_GYROSCOPE_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(5, Constant.PREF_TYPE_LIGHT_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(6, Constant.PREF_TYPE_PRESSURE_KEY);
-        
-        Constant.sAllSensorPreferenceKeyMap.put(7, Constant.PREF_TYPE_TEMPERATURE_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(8, Constant.PREF_TYPE_PROXIMITY_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(9, Constant.PREF_TYPE_GRAVITY_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(10, Constant.PREF_TYPE_LINEAR_ACCELERATION_KEY);
-        
-        Constant.sAllSensorPreferenceKeyMap.put(11, Constant.PREF_TYPE_ROTATION_VECTOR_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(12, Constant.PREF_TYPE_RELATIVE_HUMIDITY_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(13, Constant.PREF_TYPE_AMBIENT_TEMPERATURE_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(14, Constant.PREF_TYPE_MAGNETIC_FIELD_UNCALIBRATED_KEY);
-        
-        Constant.sAllSensorPreferenceKeyMap.put(15, Constant.PREF_TYPE_GAME_ROTATION_VECTOR_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(16, Constant.PREF_TYPE_GYROSCOPE_UNCALIBRATED_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(17, Constant.PREF_TYPE_SIGNIFICANT_MOTION_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(18, Constant.PREF_TYPE_STEP_DETECTOR_KEY);
-        
-        Constant.sAllSensorPreferenceKeyMap.put(19, Constant.PREF_TYPE_STEP_COUNTER_KEY);
-        Constant.sAllSensorPreferenceKeyMap.put(20, Constant.PREF_TYPE_GEOMAGNETIC_ROTATION_VECTOR_KEY);
-        
-        getAllDeviceSensorList();
         
         mSensorFeedAdapter = new SensorFeedAdapter(this);
 
@@ -276,12 +255,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     
     public class RecentSectionFragment extends Fragment {
 
+    	private ListView listview;
+    	private TextView emptyView;
     	@Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.activity_recent, container, false);
 
-    		final ListView listview = (ListView) rootView.findViewById(R.id.listview);
+            listview = (ListView) rootView.findViewById(R.id.listview);
+            emptyView = (TextView) rootView.findViewById(R.id.emptystub);
     		
     		// create adapter instance
     		RecentActivityAdapter adapter = new RecentActivityAdapter(getActivity());
@@ -292,7 +274,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     		
     		if(FeedResource.getInstance().getAllFeed().size() > 0){
     			listview.setVisibility(View.VISIBLE);
-    			rootView.findViewById(R.id.emptystub).setVisibility(View.GONE);
+    			emptyView.setVisibility(View.GONE);
 			}
     		
     		listview.setOnItemClickListener(new OnItemClickListener() {
@@ -314,6 +296,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     	@Override
     	public void onResume() {
         	FeedResource.getInstance().openDataSource();
+        	if(FeedResource.getInstance().getAllFeed().size() > 0){
+        		listview.setVisibility(View.VISIBLE);
+    			emptyView.setVisibility(View.GONE);
+			}
     		super.onResume();
     	}
 
@@ -426,7 +412,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 		if (menuItemName.equalsIgnoreCase("Delete")) {
 			
-			FeedResource.getInstance().removeFeed(info.position);
+			FeedResource.getInstance().removeRecentFeed(info.position);
 			
 		}else if (menuItemName.contains("View")) {
 			Intent intent = new Intent(MainActivity.this, ViewActivity.class);
@@ -435,27 +421,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		} 
 		return true;
 	}
-    
-    public void getAllDeviceSensorList(){
-    	SensorManager sensorManager;
-
-    		// Get the reference to the sensor manager
-    		sensorManager = (SensorManager) getSystemService(Service.SENSOR_SERVICE);
-
-    		// Get the list of sensor
-    		List<Sensor> sensorList = sensorManager.getSensorList(Sensor.TYPE_ALL);
-
-    		for (Sensor sensor : sensorList) {
-    			
-    			SensorFeed sFeed = new SensorFeed();
-    			
-    			sFeed.setName(sensor.getName());
-    			sFeed.setVendor(sensor.getVendor());
-    			sFeed.setTypeValue(sensor.getType());
-    			
-    			FeedResource.getInstance().getSensorFeedList().add(sFeed);
-    		}
-    }
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -472,9 +437,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             case R.id.action_settings:
             	startActivity(new Intent(this, SettingPreferenceActivity.class));
             return true;
+            case R.id.action_manage:
+            	startActivity(new Intent(this, EndPointActivity.class));
+            	return true;
             case R.id.action_sync:
             	startActivity(new Intent(this, SensorEvaluator.class));
-            return true;
+            	return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -501,6 +469,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         		Context. MODE_PRIVATE	);
 
         activityPrefs.edit().putBoolean("is_first_time", true).commit(); 
+        AppController.isFirstLoad = true;
         	
 		super.onDestroy();
 	}
@@ -528,7 +497,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			}
 
 			public void onAnimationEnd(Animation animation) {
-				view.setVisibility(View.INVISIBLE);
+				view.setVisibility(View.GONE);
 				
 				showTitle();
 				 
@@ -540,6 +509,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			         parentView.setVisibility(View.VISIBLE);
 			        }
 			    }
+			    
+			    AppController.isFirstLoad = false;
 			}
 		});
 

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    
-    <PreferenceCategory 
+    <PreferenceCategory
         android:key="pref_configure_sensor_setting_key"
         android:title="@string/pref_configure_sensor_setting" >
-        
+
         <!-- Sensor will be added dynamically -->
-        
+
     </PreferenceCategory>
-    
+
 </PreferenceScreen>

@@ -5,6 +5,8 @@ import java.util.Map;
 
 public final class Constant {
 	
+	public static final boolean DEBUG = false;
+	
 	public static final String SHARED_PREFS_FILENAME = "MobGrapherPrefs";
 		
 	public static final String PREF_TYPE_ALL_SENSOR_KEY = "pref_type_all_sensor_key";

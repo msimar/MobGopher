@@ -1,0 +1,60 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/pref_category_title_create_feed" >
+        <EditTextPreference
+            android:dialogTitle="@string/pref_dialog_title_feed_title"
+            android:key="@string/pref_key_feed_title"
+            android:summary="@string/pref_summary_feed_title"
+            android:title="@string/pref_title_feed_title" />
+        <EditTextPreference
+            android:dialogTitle="@string/pref_dialog_title_feed_server_name"
+            android:key="@string/pref_key_feed_server_name"
+            android:summary="@string/pref_summary_feed_server_name"
+            android:title="@string/pref_title_feed_server_name" />
+        <EditTextPreference
+            android:dialogTitle="@string/pref_dialog_title_feed_server_url"
+            android:key="@string/pref_key_feed_server_url"
+            android:summary="@string/pref_summary_feed_server_url"
+            android:title="@string/pref_title_feed_server_url" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_category_title_manage_feed" >
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/syncConnectionMode"
+            android:entryValues="@array/syncConnectionModeValues"
+            android:key="@string/pref_key_feed_connection_mode"
+            android:summary="@string/pref_summary_connection_mode"
+            android:title="@string/pref_title_connection_mode" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/syncFrequency"
+            android:entryValues="@array/syncFrequencyValues"
+            android:key="@string/pref_key_feed_sync_frequency"
+            android:summary="@string/pref_summary_sync_frequency"
+            android:title="@string/pref_title_sync_frequency" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_feed_sync_repeat"
+            android:summary="@string/pref_summary_sync_repeat"
+            android:title="@string/pref_title_sync_repeat" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_feed_manage_feed_logging"
+            android:summary="@string/pref_summary_manage_feed_logging"
+            android:title="@string/pref_title_manage_feed_logging" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_feed_manage_feed"
+            android:summary="@string/pref_summary_manage_feed"
+            android:title="@string/pref_title_manage_feed" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_category_title_choose_sensor" >
+        <PreferenceScreen
+            android:fragment="com.univ.helsinki.app.activities.SettingManageEndpoint$ChooseSensorFragment"
+            android:summary="@string/pref_summary_choose_sensor"
+            android:title="@string/pref_title_choose_sensor" >
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -8,6 +8,13 @@
         android:title="@string/action_sync"/>
     
     <item
+        android:id="@+id/action_manage"
+        android:orderInCategory="101"
+        android:icon="@drawable/cloud_list_64"
+        android:showAsAction="always"
+        android:title="@string/action_sync"/>
+    
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="102"
         android:icon="@drawable/ic_settings_blue_48"

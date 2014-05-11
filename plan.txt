@@ -1,0 +1,26 @@
+
+
+Feed title
+Feed Server Name ( Default == Server )
+Feed Server URL
+Schedule of Feed Sync
+Date  
+Time ( Default time : 0800 AM )
+Repeat : 
+Frequency ( Everyday, Weekly, Monthly, Quaterly, Yearly )
+Connection Preference
+Enable/Disable 
+Logging : Add to the activities or not
+
+
+ bind to sensor list
+
+Fragment contain all that sensors
+
+
+
+Manage Feed ( + : Create , Delete )
+
+Notification of feeds
+
+Feed que : Silent feed on server : send notication.

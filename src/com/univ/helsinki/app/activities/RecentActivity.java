@@ -6,11 +6,11 @@ import android.widget.ListView;
 
 import com.univ.helsinki.app.R;
 import com.univ.helsinki.app.adapter.RecentActivityAdapter;
-import com.univ.helsinki.app.db.RecentActivityDataSource;
+import com.univ.helsinki.app.db.DataSourceRecentFeed;
 
 public class RecentActivity extends Activity {
 
-	private RecentActivityDataSource mDatasource;
+	private DataSourceRecentFeed mDatasource;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class RecentActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recent);
 
-		mDatasource = new RecentActivityDataSource(this);
+		//mDatasource = new DataSourceRecentFeed(this);
 
 		final ListView listview = (ListView) findViewById(R.id.listview);
 

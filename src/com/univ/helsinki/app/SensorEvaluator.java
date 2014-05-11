@@ -29,6 +29,7 @@ import android.location.Address;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,7 @@ import com.google.gson.Gson;
 import com.univ.helsinki.app.db.FeedResource;
 import com.univ.helsinki.app.sensor.SensorStream;
 import com.univ.helsinki.app.sensor.SensorUnit;
+import com.univ.helsinki.app.util.Constant;
 
 public 	class 		SensorEvaluator 
 		extends 	Activity 
@@ -109,47 +111,78 @@ public 	class 		SensorEvaluator
 	protected void onResume() {
 		super.onResume();
 		// Register listener
-		boolean isSupported = mSensorManager.registerListener(mSensorListener,
+		boolean isSupported = false;
+		
+		if( PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
+				Constant.PREF_TYPE_PRESSURE_KEY, false)){
+			
+			isSupported = mSensorManager.registerListener(mSensorListener,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE),
 				SensorManager.SENSOR_DELAY_NORMAL);
+			
+			Log.i(TAG,"AndroidSensor.TYPE_PRESSURE supported :" + isSupported);
+		}
 		
-		Log.i(TAG,"AndroidSensor.TYPE_PRESSURE supported :" + isSupported);
-		
-		isSupported = mSensorManager.registerListener(mSensorListener,
+		if( PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
+				Constant.PREF_TYPE_AMBIENT_TEMPERATURE_KEY, false)){
+			
+			isSupported = mSensorManager.registerListener(mSensorListener,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE),
 				SensorManager.SENSOR_DELAY_NORMAL);
+			
+			Log.i(TAG,"AndroidSensor.TYPE_AMBIENT_TEMPERATURE supported :" + isSupported);
+		}
 		
-		Log.i(TAG,"AndroidSensor.TYPE_AMBIENT_TEMPERATURE supported :" + isSupported);
+		if( PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
+				Constant.PREF_TYPE_ACCELEROMETER_KEY, false)){
 		
-		isSupported = mSensorManager.registerListener(mSensorListener,
+			isSupported = mSensorManager.registerListener(mSensorListener,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 				SensorManager.SENSOR_DELAY_NORMAL);
 		
-		Log.i(TAG,"AndroidSensor.TYPE_ACCELEROMETER supported :" + isSupported);
+			Log.i(TAG,"AndroidSensor.TYPE_ACCELEROMETER supported :" + isSupported);
+			
+		}
 		
-		isSupported = mSensorManager.registerListener(mSensorListener,
+		if( PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
+				Constant.PREF_TYPE_LIGHT_KEY, false)){
+		
+			isSupported = mSensorManager.registerListener(mSensorListener,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT),
 				SensorManager.SENSOR_DELAY_NORMAL);
+			
+			Log.i(TAG,"AndroidSensor.TYPE_LIGHT supported :" + isSupported);
+		}
 		
-		Log.i(TAG,"AndroidSensor.TYPE_LIGHT supported :" + isSupported);
+		if( PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
+				Constant.PREF_TYPE_GYROSCOPE_KEY, false)){
 		
-		isSupported = mSensorManager.registerListener(mSensorListener,
+			isSupported = mSensorManager.registerListener(mSensorListener,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE),
 				SensorManager.SENSOR_DELAY_NORMAL);
+			
+			Log.i(TAG,"AndroidSensor.TYPE_GYROSCOPE supported :" + isSupported);
+		}
 		
-		Log.i(TAG,"AndroidSensor.TYPE_GYROSCOPE supported :" + isSupported);
-		
-		isSupported = mSensorManager.registerListener(mSensorListener,
+		if( PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
+				Constant.PREF_TYPE_MAGNETIC_FIELD_UNCALIBRATED_KEY, false)){
+			
+			isSupported = mSensorManager.registerListener(mSensorListener,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED),
 				SensorManager.SENSOR_DELAY_NORMAL);
+			
+			Log.i(TAG,"AndroidSensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED supported :" + isSupported);
+		}
 		
-		Log.i(TAG,"AndroidSensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED supported :" + isSupported);
+		if( PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
+				Constant.PREF_TYPE_MAGNETIC_FIELD_KEY, false)){
 		
-		isSupported = mSensorManager.registerListener(mSensorListener,
+			isSupported = mSensorManager.registerListener(mSensorListener,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),
 				SensorManager.SENSOR_DELAY_NORMAL);
-		
-		Log.i(TAG,"AndroidSensor.TYPE_MAGNETIC_FIELD supported :" + isSupported);
+			
+			Log.i(TAG,"AndroidSensor.TYPE_MAGNETIC_FIELD supported :" + isSupported);
+		}
 	}
 
 	@Override
@@ -455,16 +488,19 @@ public 	class 		SensorEvaluator
 	        protected void onPostExecute(List<Address> addr) {
 	            // might want to change "executed" for the returned string passed
 	            // into onPostExecute() but that is upto you
-	        	Log.d(TAG, addr.get(0).toString())	;
-	        	/*Intent intent = new Intent(LocationActivity.this, DisplayActivity.class);
-	        	intent.putExtra(DisplayActivity.KEY, addr.get(0).toString());
-	        	startActivity(intent);*/
 	        	
-	        	String address = addr.get(0).toString();
-				int startIndx = address.indexOf(":\"")+2;
-				int endIndx = address.indexOf("],")-1;
-				 
-				Log.i(TAG, "Location Address: " + address.subSequence(startIndx, endIndx));
+	        	if(addr != null){
+	        		Log.d(TAG, addr.get(0).toString())	;
+		        	/*Intent intent = new Intent(LocationActivity.this, DisplayActivity.class);
+		        	intent.putExtra(DisplayActivity.KEY, addr.get(0).toString());
+		        	startActivity(intent);*/
+		        	
+		        	String address = addr.get(0).toString();
+					int startIndx = address.indexOf(":\"")+2;
+					int endIndx = address.indexOf("],")-1;
+					 
+					Log.i(TAG, "Location Address: " + address.subSequence(startIndx, endIndx));	
+	        	}
 				
 				//setAddres(address.subSequence(startIndx, endIndx).toString());
 				
@@ -493,8 +529,8 @@ public 	class 		SensorEvaluator
 				mTextView.setText(jsonString);
 				
 				FeedResource.getInstance().openDataSource();
-				FeedResource.getInstance().addFeed(0, 
-						FeedResource.getInstance().createFeed("Synced", jsonString));
+				FeedResource.getInstance().addRecentFeed(0, 
+						FeedResource.getInstance().createRecentFeed("Synced", jsonString));
 				
 				closeActivity();
 	        }
