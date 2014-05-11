@@ -103,7 +103,9 @@ public class SettingConfigureSensor extends PreferenceActivity {
 		@Override
 		public boolean onPreferenceChange(Preference preference, Object newValue) {
 
-			mSelectedSensorMap.put(preference.getKey(), true);
+			if( !preference.getKey().equals(Constant.PREF_TYPE_ALL_SENSOR_KEY)){
+				mSelectedSensorMap.put(preference.getKey(), true);
+			}
 			
 			Boolean prefValue = (Boolean) newValue;
 			

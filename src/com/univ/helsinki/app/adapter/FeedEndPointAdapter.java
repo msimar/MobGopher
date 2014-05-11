@@ -80,13 +80,34 @@ public class FeedEndPointAdapter extends BaseAdapter {
 		int syncFreqPref = this.mFeedEndPointList.get(position).getSyncFrequency();
 		String syncFreqPrefValue = mSyncFrequencyArray[syncFreqPref];
 		
+		String[] tokens = this.mFeedEndPointList.get(position).getSensorBundle().split(";");
+		StringBuffer sensorBuffer = new StringBuffer();
+		for(int indx = 1 ; indx < tokens.length ; indx++ ){
+			if( FeedResource.sAllSensorKeyNameMap.get(tokens[indx]) != null);
+				sensorBuffer.append(FeedResource.sAllSensorKeyNameMap.get(tokens[indx])).append(", ");
+		}
+		
 		holder.tvTitle.setText(this.mFeedEndPointList.get(position).getFeedTitle());
-		holder.tvContent.setText(
-				"Server Name: " + this.mFeedEndPointList.get(position).getFeedServerName() + " \n" + 
-				"URL: " + this.mFeedEndPointList.get(position).getFeedServerUrl() + " \n" +
-				"Connection: " + connPrefValue + " \n" +
-				"Sync Frequency: " + syncFreqPrefValue);
+		
+		StringBuffer contentBuffer = new StringBuffer();
+		
+		contentBuffer.append("Server Name: ").append(this.mFeedEndPointList.get(position).getFeedServerName());
+		contentBuffer.append(" \n");
+		contentBuffer.append("URL: ").append(this.mFeedEndPointList.get(position).getFeedServerUrl());
+		contentBuffer.append(" \n");
+		contentBuffer.append("Connection: ").append(connPrefValue);
+		contentBuffer.append(" \n");
+		contentBuffer.append("Sync Frequency: ").append(syncFreqPrefValue);
+		contentBuffer.append(" \n");
+		if( !sensorBuffer.toString().isEmpty()){
+			contentBuffer.append("Selected Sensors: ").append(sensorBuffer);
+			contentBuffer.append(" \n");
+		}
+		
+		holder.tvContent.setText(contentBuffer.toString());
 		holder.tvTimestamp.setText(this.mFeedEndPointList.get(position).getUpdatedTimestamp());
+		
+		
 		
 		Log.i(TAG, "feed : " + this.mFeedEndPointList.get(position) );
 		

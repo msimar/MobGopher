@@ -1,29 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory android:title="@string/pref_configure_sensor_setting" >
+    <!-- <PreferenceCategory android:title="@string/pref_configure_sensor_setting" >
         <PreferenceScreen
             android:summary="@string/pref_configure_sensor_setting_summary"
             android:title="@string/pref_configure_sensor_setting" >
             <intent android:action=".activities.SettingConfigureSensor" />
         </PreferenceScreen>
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_update_setting" >
-        
-        <ListPreference
-            android:key="prefSyncFrequency"
-            android:entries="@array/syncFrequency"
-            android:entryValues="@array/syncFrequencyValues"
-            android:title="@string/pref_title_sync_frequency" 
-            android:summary="@string/pref_summary_sync_frequency" />
-        
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="prefSendReport"
-            android:summary="@string/pref_send_report_summary"
-            android:title="@string/pref_send_report" >
-        </CheckBoxPreference>
-    </PreferenceCategory>
+    </PreferenceCategory> -->
+    
     <PreferenceCategory android:title="@string/pref_user_profile" >
         <EditTextPreference
             android:key="prefUsername"
@@ -41,5 +26,23 @@
             android:summary="MIT Creative Licence"
             android:title="Licence" />
     </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/pref_update_setting" >
+        
+        <ListPreference
+            android:key="prefSyncFrequency"
+            android:entries="@array/syncFrequency"
+            android:entryValues="@array/syncFrequencyValues"
+            android:title="@string/pref_title_sync_frequency" 
+            android:summary="@string/pref_summary_sync_frequency" />
+        
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefSendReport"
+            android:summary="@string/pref_send_report_summary"
+            android:title="@string/pref_send_report" >
+        </CheckBoxPreference>
+    </PreferenceCategory>
+    
 
 </PreferenceScreen>

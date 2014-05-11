@@ -12,11 +12,13 @@ import com.univ.helsinki.app.adapter.FeedEndPointAdapter;
 import com.univ.helsinki.app.adapter.RecentActivityAdapter;
 import com.univ.helsinki.app.core.DeviceFeed;
 import com.univ.helsinki.app.core.SensorFeed;
+import com.univ.helsinki.app.util.Constant;
 
 public class FeedResource {
 	
 	@SuppressLint("UseSparseArrays")
 	public Map<Integer,String> mAllSensorMap = new HashMap<Integer, String>();
+	public static Map<String,String> sAllSensorKeyNameMap = new HashMap<String, String>();
 	
 	private List<SensorFeed> mSensorFeedList;
 	
@@ -64,6 +66,32 @@ public class FeedResource {
 		mAllSensorMap.put(18, "TYPE_STEP_DETECTOR");
 		mAllSensorMap.put(19, "TYPE_STEP_COUNTER");
 		mAllSensorMap.put(20, "TYPE_GEOMAGNETIC_ROTATION_VECTOR");
+		
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_ACCELEROMETER_KEY, "ACCELEROMETER");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_MAGNETIC_FIELD_KEY, "MAGNETIC FIELD");
+		
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_ORIENTATION_KEY, "ORIENTATION");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_GYROSCOPE_KEY, "GYROSCOPE");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_LIGHT_KEY, "LIGHT");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_PRESSURE_KEY, "PRESSURE");
+		
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_TEMPERATURE_KEY, "TEMPERATURE");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_PROXIMITY_KEY, "PROXIMITY");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_GRAVITY_KEY, "GRAVITY");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_LINEAR_ACCELERATION_KEY, "LINEAR ACCELERATION");
+		
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_ROTATION_VECTOR_KEY, "ROTATION VECTOR");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_RELATIVE_HUMIDITY_KEY, "RELATIVE HUMIDITY");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_AMBIENT_TEMPERATURE_KEY, "AMBIENT TEMPERATURE");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_MAGNETIC_FIELD_UNCALIBRATED_KEY, "MAGNETIC FIELD UNCALIBRATED");
+		
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_GAME_ROTATION_VECTOR_KEY, "GAME ROTATION VECTOR");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_GYROSCOPE_UNCALIBRATED_KEY, "GYROSCOPE UNCALIBRATED");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_SIGNIFICANT_MOTION_KEY, "SIGNIFICANT MOTION");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_STEP_DETECTOR_KEY, "STEP DETECTOR");
+		
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_STEP_COUNTER_KEY, "STEP COUNTER");
+		sAllSensorKeyNameMap.put(Constant.PREF_TYPE_GEOMAGNETIC_ROTATION_VECTOR_KEY, "GEOMAGNETIC ROTATION VECTOR");
 	}
 	
 	public static synchronized FeedResource getInstance(){
