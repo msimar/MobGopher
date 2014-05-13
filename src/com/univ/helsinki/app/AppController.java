@@ -8,20 +8,15 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 
 import com.univ.helsinki.app.core.SensorFeed;
-import com.univ.helsinki.app.db.DatabaseHelper;
 import com.univ.helsinki.app.db.FeedResource;
 import com.univ.helsinki.app.util.Constant;
 
 public class AppController extends Application {
 	
-	public static boolean isFirstLoad = false;
-	
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
-		
-		isFirstLoad = true;
 		
 		setSensorMap();
 		

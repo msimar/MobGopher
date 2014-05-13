@@ -7,6 +7,10 @@ public final class Constant {
 	
 	public static final boolean DEBUG = false;
 	
+    public static final int SPLASH_SCREEN_TIME_OUT = 1200;
+    
+	public static final String SHARED_PREFS_KEY_ISFIRST_LAUNCH = "is_first_launch" ;
+	
 	public static final String SHARED_PREFS_FILENAME = "MobGrapherPrefs";
 		
 	public static final String PREF_TYPE_ALL_SENSOR_KEY = "pref_type_all_sensor_key";

@@ -48,9 +48,10 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.univ.helsinki.app.activities.EndPointActivity;
 import com.univ.helsinki.app.activities.SettingPreferenceActivity;
@@ -63,8 +64,6 @@ import com.univ.helsinki.app.util.Constant;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
-	 // Splash screen timer
-    private static int SPLASH_TIME_OUT = 1;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the
      * three primary sections of the app. We use a {@link android.support.v4.app.FragmentPagerAdapter}
@@ -86,22 +85,24 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        if(FeedResource.getInstance().getSharedPrefs().getBoolean(
+        		Constant.SHARED_PREFS_KEY_ISFIRST_LAUNCH, false)) {
+        	
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getActionBar().hide();
-        
-        {
+         
         	hideTitle();
         }
         
         setContentView(R.layout.activity_main);
         
-        SharedPreferences activityPrefs = getSharedPreferences(
-        		Constant.SHARED_PREFS_FILENAME, 
-        		Context. MODE_PRIVATE	);
-
-        /*if (activityPrefs.getBoolean("is_first_time", true)) {
+        splashLayout =  (ViewGroup) findViewById(R.id.splashLayout);
+        
+        if(FeedResource.getInstance().getSharedPrefs().getBoolean(
+        		Constant.SHARED_PREFS_KEY_ISFIRST_LAUNCH, false)) {
             // record the fact that the app has been started at least once
-        	activityPrefs.edit().putBoolean("is_first_time", false).commit(); 
+        	FeedResource.getInstance().getSharedPrefs().edit().putBoolean(
+        			Constant.SHARED_PREFS_KEY_ISFIRST_LAUNCH, false).commit(); 
         	
         	final ViewGroup splashLayout =  (ViewGroup) findViewById(R.id.splashLayout);
         	
@@ -111,20 +112,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 public void run() {
                 	activateSplashScreen(splashLayout);
                 }
-            }, SPLASH_TIME_OUT);
+            }, Constant.SPLASH_SCREEN_TIME_OUT);
         	
-        } */
-        
-        splashLayout =  (ViewGroup) findViewById(R.id.splashLayout);
-        
-        if(AppController.isFirstLoad){
-        	new Handler().postDelayed(new Runnable() {
-   			 
-                @Override
-                public void run() {
-                	activateSplashScreen(splashLayout);
-                }
-            }, SPLASH_TIME_OUT);
         }else{
         	splashLayout.setVisibility(View.GONE);
         }
@@ -450,6 +439,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     
     @Override
 	protected void onResume() {
+//    	Toast.makeText(this,
+//    			"Spref : " + FeedResource.getInstance().getSharedPrefs().getBoolean("is_first_time", false), 
+//    			Toast.LENGTH_SHORT).show();
     	FeedResource.getInstance().openDataSource();
 		super.onResume();
 	}
@@ -463,14 +455,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	protected void onDestroy() {
 		FeedResource.getInstance().destory();
-		
-		SharedPreferences activityPrefs = getSharedPreferences(
-        		Constant.SHARED_PREFS_FILENAME, 
-        		Context. MODE_PRIVATE	);
-
-        activityPrefs.edit().putBoolean("is_first_time", true).commit(); 
-        AppController.isFirstLoad = true;
-        	
+		FeedResource.getInstance().getSharedPrefs().edit().putBoolean(
+    			Constant.SHARED_PREFS_KEY_ISFIRST_LAUNCH, false).commit();  
 		super.onDestroy();
 	}
 	
@@ -490,7 +476,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 			public void onAnimationStart(Animation animation) {
 				getActionBar().show();
-				
 			}
 
 			public void onAnimationRepeat(Animation animation) {
@@ -509,8 +494,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			         parentView.setVisibility(View.VISIBLE);
 			        }
 			    }
-			    
-			    AppController.isFirstLoad = false;
 			}
 		});
 

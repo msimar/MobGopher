@@ -7,6 +7,7 @@ import java.util.Map;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.univ.helsinki.app.adapter.FeedEndPointAdapter;
 import com.univ.helsinki.app.adapter.RecentActivityAdapter;
@@ -15,6 +16,8 @@ import com.univ.helsinki.app.core.SensorFeed;
 import com.univ.helsinki.app.util.Constant;
 
 public class FeedResource {
+	
+	private SharedPreferences mSharedPrefs;
 	
 	@SuppressLint("UseSparseArrays")
 	public Map<Integer,String> mAllSensorMap = new HashMap<Integer, String>();
@@ -211,6 +214,15 @@ public class FeedResource {
 	 */
 	
 	public void inti(Context context) {
+		
+		this.mSharedPrefs = context.getSharedPreferences(
+        		Constant.SHARED_PREFS_FILENAME, 
+        		Context. MODE_PRIVATE	);
+		
+		// set value true for first time
+		getSharedPrefs().edit().putBoolean(
+    			Constant.SHARED_PREFS_KEY_ISFIRST_LAUNCH, true).commit(); 
+		
 		this.mDbHelper = new DatabaseHelper(context);
 		
 		this.mDatasourceRecentFeed = new DataSourceRecentFeed(this.mDbHelper);
@@ -258,5 +270,9 @@ public class FeedResource {
 
 	public void setSelectedSensorMap(Map<String,Boolean> mSelectedSensorMap) {
 		this.mSelectedSensorMap = mSelectedSensorMap;
+	}
+
+	public SharedPreferences getSharedPrefs() {
+		return mSharedPrefs;
 	}
 }

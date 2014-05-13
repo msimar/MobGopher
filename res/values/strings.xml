@@ -175,7 +175,7 @@
      
     <string name="pref_title_config_feed">Configure Feed</string>
     <string name="pref_title_user_profile">App Profile</string>
-    <string name="pref_title_update_setting">Update Settings</string>
+    <string name="pref_title_update_setting">App Settings</string>
     <string name="pref_configure_sensor_setting">Configure Sensor</string>
     
     <string-array name="listitem_menu_array">
