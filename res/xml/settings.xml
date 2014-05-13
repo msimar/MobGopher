@@ -38,12 +38,12 @@
     
     <PreferenceCategory android:title="@string/pref_title_update_setting" >
         
-        <ListPreference
+        <!-- <ListPreference
             android:key="prefSyncFrequency"
             android:entries="@array/syncFrequency"
             android:entryValues="@array/syncFrequencyValues"
             android:title="@string/pref_title_sync_frequency" 
-            android:summary="@string/pref_summary_sync_frequency" />
+            android:summary="@string/pref_summary_sync_frequency" /> -->
         
         <CheckBoxPreference
             android:defaultValue="false"

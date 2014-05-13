@@ -5,7 +5,7 @@
     <string name="app_name_alias">MobGopher</string>
     
     <!-- sync -->
-    <string name="action_sync">Sync \u0026 Share</string>
+    <string name="action_sync">Manual Feed Sync</string>
     <string name="action_add_feed">Create Feed</string>
     <string name="action_settings">Settings</string>
     
@@ -165,7 +165,10 @@
     
     <!-- App Profile -->
     <string name="pref_user_name">MobGopher</string>
-    <string name="pref_user_name_summary">version 0.1</string>
+    <!-- 6 May 2014 -->
+    <!-- <string name="pref_user_name_summary">version 0.1</string> -->
+    <!-- 12 May 2014 -->
+    <string name="pref_user_name_summary">version 0.2</string>
     
     <string name="pref_title_activity_config_feed">Manage Feed</string>
     <string name="pref_summary_activity_config_feed">Add/Remove Endpoint Feed</string> 
