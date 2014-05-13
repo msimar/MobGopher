@@ -15,7 +15,8 @@
     <!-- activity name -->
     <string name="activity_name_main">CaratSensor</string>
     <string name="activity_name_view">Synced Metadata</string>
-    <string name="activity_name_endpoint">Manage Feed Endpoint</string>
+    <string name="activity_name_manage_endpoint">Manage Feed Endpoint</string>
+     <string name="activity_name_create_endpoint">Create Feed Endpoint</string>
     <string name="activity_title_settings_configure_sensor">Configure Sensor</string>
     <string name="activity_title_settings">Settings</string>
     <string name="activity_title_sensor">Sensor List</string>

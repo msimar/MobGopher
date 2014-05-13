@@ -42,7 +42,7 @@
         
         <activity
             android:name=".activities.EndPointActivity"
-            android:label="@string/activity_name_endpoint"
+            android:label="@string/activity_name_manage_endpoint"
             android:parentActivityName=".activities.SettingPreferenceActivity" >
             <intent-filter>
                 <action android:name=".activities.EndPointActivity" />
@@ -52,7 +52,7 @@
         
         <activity
             android:name=".activities.ManageEndPointActivity"
-            android:label="@string/activity_name_endpoint"
+            android:label="@string/activity_name_create_endpoint"
             android:parentActivityName=".activities.EndPointActivity" >
         </activity>
         

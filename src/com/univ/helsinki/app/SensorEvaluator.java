@@ -40,6 +40,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.gson.Gson;
+import com.univ.helsinki.app.db.FeedEndPoint;
 import com.univ.helsinki.app.db.FeedResource;
 import com.univ.helsinki.app.sensor.SensorStream;
 import com.univ.helsinki.app.sensor.SensorUnit;
@@ -89,6 +90,25 @@ public 	class 		SensorEvaluator
 		// do initialization of services
 		this.doInitialize(this);
 	}
+	
+	public class SyncManager extends Thread {
+		 
+		 @Override
+		public void run() {
+		 
+			for(FeedEndPoint endPoint : FeedResource.getInstance().getAllFeedEndPoint()){
+			}
+			// Step1 : Get All Feeds
+			
+			// Step2 : Iterate over feed to sync
+			
+			// Step3 : Get sensor data as per feed
+			
+			// Step4 : Add Feed to Recent Activity
+		}
+	}
+
+	
 	public void doInitialize(Context context){
 		
 		// Location Handling
@@ -529,17 +549,19 @@ public 	class 		SensorEvaluator
 				mTextView.setText(jsonString);
 				
 				FeedResource.getInstance().openDataSource();
-				FeedResource.getInstance().addRecentFeed(0, 
-						FeedResource.getInstance().createRecentFeed("Synced", jsonString));
+				
+				for(FeedEndPoint endPoint : FeedResource.getInstance().getAllFeedEndPoint()){
+
+					FeedResource.getInstance().addRecentFeed(0, 
+							FeedResource.getInstance().createRecentFeed(
+									endPoint.getFeedTitle(), 
+									jsonString));
+				}
+				
 				
 				closeActivity();
 	        }
 
-	        @Override
-	        protected void onPreExecute() {}
-
-	        @Override
-	        protected void onProgressUpdate(Void... values) {}
 	 }
 	 
 	 private void closeActivity(){

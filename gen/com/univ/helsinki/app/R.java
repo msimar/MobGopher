@@ -156,162 +156,167 @@ public final class R {
         /**  sync 
          */
         public static final int action_sync=0x7f090002;
-        public static final int activity_name_endpoint=0x7f090009;
+        public static final int activity_name_create_endpoint=0x7f09000a;
         /**  activity name 
          */
         public static final int activity_name_main=0x7f090007;
+        public static final int activity_name_manage_endpoint=0x7f090009;
         public static final int activity_name_view=0x7f090008;
-        public static final int activity_title_sensor=0x7f09000c;
-        public static final int activity_title_sensor_barometer=0x7f09000d;
-        public static final int activity_title_settings=0x7f09000b;
-        public static final int activity_title_settings_configure_sensor=0x7f09000a;
+        public static final int activity_title_sensor=0x7f09000d;
+        public static final int activity_title_sensor_barometer=0x7f09000e;
+        public static final int activity_title_settings=0x7f09000c;
+        public static final int activity_title_settings_configure_sensor=0x7f09000b;
         public static final int app_name=0x7f090000;
         public static final int app_name_alias=0x7f090001;
         /**   Strings for possible PreferenceActivity Back/Next buttons 
          */
-        public static final int back_button_label=0x7f090068;
-        public static final int next_button_label=0x7f090069;
-        public static final int pref_=0x7f090038;
-        public static final int pref_cancel_preferences=0x7f09005f;
-        public static final int pref_category_title_choose_sensor=0x7f090040;
+        public static final int back_button_label=0x7f090069;
+        public static final int next_button_label=0x7f09006a;
+        public static final int pref_=0x7f090039;
+        public static final int pref_cancel_preferences=0x7f090060;
+        public static final int pref_category_title_choose_sensor=0x7f090041;
         /**  Preference Category Sensor 
          */
-        public static final int pref_category_title_create_feed=0x7f09003e;
-        public static final int pref_category_title_manage_feed=0x7f09003f;
-        public static final int pref_configure_sensor_setting=0x7f090067;
-        public static final int pref_configure_sensor_setting_summary=0x7f09003b;
-        public static final int pref_dialog_title_feed_server_name=0x7f090048;
-        public static final int pref_dialog_title_feed_server_url=0x7f09004c;
-        public static final int pref_dialog_title_feed_title=0x7f090044;
-        public static final int pref_key_feed_connection_mode=0x7f09004d;
-        public static final int pref_key_feed_manage_feed=0x7f090051;
-        public static final int pref_key_feed_manage_feed_logging=0x7f090050;
-        public static final int pref_key_feed_server_name=0x7f090045;
-        public static final int pref_key_feed_server_url=0x7f090049;
-        public static final int pref_key_feed_sync_frequency=0x7f09004e;
-        public static final int pref_key_feed_sync_repeat=0x7f09004f;
+        public static final int pref_category_title_create_feed=0x7f09003f;
+        public static final int pref_category_title_manage_feed=0x7f090040;
+        public static final int pref_configure_sensor_setting=0x7f090068;
+        public static final int pref_configure_sensor_setting_summary=0x7f09003c;
+        public static final int pref_dialog_title_feed_server_name=0x7f090049;
+        public static final int pref_dialog_title_feed_server_url=0x7f09004d;
+        public static final int pref_dialog_title_feed_title=0x7f090045;
+        public static final int pref_key_feed_connection_mode=0x7f09004e;
+        public static final int pref_key_feed_manage_feed=0x7f090052;
+        public static final int pref_key_feed_manage_feed_logging=0x7f090051;
+        public static final int pref_key_feed_server_name=0x7f090046;
+        public static final int pref_key_feed_server_url=0x7f09004a;
+        public static final int pref_key_feed_sync_frequency=0x7f09004f;
+        public static final int pref_key_feed_sync_repeat=0x7f090050;
         /**  Preference Screen Items 
          */
-        public static final int pref_key_feed_title=0x7f090041;
-        public static final int pref_save_preferences=0x7f09005e;
-        public static final int pref_send_report=0x7f090039;
-        public static final int pref_send_report_summary=0x7f09003a;
-        public static final int pref_summary_activity_config_feed=0x7f090063;
-        public static final int pref_summary_choose_sensor=0x7f09005d;
-        public static final int pref_summary_connection_mode=0x7f090055;
-        public static final int pref_summary_feed_server_name=0x7f090047;
-        public static final int pref_summary_feed_server_url=0x7f09004b;
-        public static final int pref_summary_feed_title=0x7f090043;
-        public static final int pref_summary_manage_feed=0x7f090059;
-        public static final int pref_summary_manage_feed_logging=0x7f09005b;
-        public static final int pref_summary_sync_frequency=0x7f090053;
-        public static final int pref_summary_sync_repeat=0x7f090057;
-        public static final int pref_sync_frequency=0x7f09003c;
-        public static final int pref_sync_frequency_summary=0x7f09003d;
-        public static final int pref_title_activity_config_feed=0x7f090062;
-        public static final int pref_title_choose_sensor=0x7f09005c;
-        public static final int pref_title_config_feed=0x7f090064;
-        public static final int pref_title_connection_mode=0x7f090054;
-        public static final int pref_title_feed_server_name=0x7f090046;
-        public static final int pref_title_feed_server_url=0x7f09004a;
-        public static final int pref_title_feed_title=0x7f090042;
-        public static final int pref_title_manage_feed=0x7f090058;
-        public static final int pref_title_manage_feed_logging=0x7f09005a;
-        public static final int pref_title_sync_frequency=0x7f090052;
-        public static final int pref_title_sync_repeat=0x7f090056;
-        public static final int pref_title_update_setting=0x7f090066;
-        public static final int pref_title_user_profile=0x7f090065;
+        public static final int pref_key_feed_title=0x7f090042;
+        public static final int pref_save_preferences=0x7f09005f;
+        public static final int pref_send_report=0x7f09003a;
+        public static final int pref_send_report_summary=0x7f09003b;
+        public static final int pref_summary_activity_config_feed=0x7f090064;
+        public static final int pref_summary_choose_sensor=0x7f09005e;
+        public static final int pref_summary_connection_mode=0x7f090056;
+        public static final int pref_summary_feed_server_name=0x7f090048;
+        public static final int pref_summary_feed_server_url=0x7f09004c;
+        public static final int pref_summary_feed_title=0x7f090044;
+        public static final int pref_summary_manage_feed=0x7f09005a;
+        public static final int pref_summary_manage_feed_logging=0x7f09005c;
+        public static final int pref_summary_sync_frequency=0x7f090054;
+        public static final int pref_summary_sync_repeat=0x7f090058;
+        public static final int pref_sync_frequency=0x7f09003d;
+        public static final int pref_sync_frequency_summary=0x7f09003e;
+        public static final int pref_title_activity_config_feed=0x7f090063;
+        public static final int pref_title_choose_sensor=0x7f09005d;
+        public static final int pref_title_config_feed=0x7f090065;
+        public static final int pref_title_connection_mode=0x7f090055;
+        public static final int pref_title_feed_server_name=0x7f090047;
+        public static final int pref_title_feed_server_url=0x7f09004b;
+        public static final int pref_title_feed_title=0x7f090043;
+        public static final int pref_title_manage_feed=0x7f090059;
+        public static final int pref_title_manage_feed_logging=0x7f09005b;
+        public static final int pref_title_sync_frequency=0x7f090053;
+        public static final int pref_title_sync_repeat=0x7f090057;
+        public static final int pref_title_update_setting=0x7f090067;
+        public static final int pref_title_user_profile=0x7f090066;
         /**  1 
          */
-        public static final int pref_type_accelerometer=0x7f090010;
-        public static final int pref_type_accelerometer_summary=0x7f090011;
+        public static final int pref_type_accelerometer=0x7f090011;
+        public static final int pref_type_accelerometer_summary=0x7f090012;
         /**  1 
          */
-        public static final int pref_type_all_sensor=0x7f09000e;
-        public static final int pref_type_all_sensor_summary=0x7f09000f;
+        public static final int pref_type_all_sensor=0x7f09000f;
+        public static final int pref_type_all_sensor_summary=0x7f090010;
         /**  13 
          */
-        public static final int pref_type_ambient_temperature=0x7f090028;
-        public static final int pref_type_ambient_temperature_summary=0x7f090029;
+        public static final int pref_type_ambient_temperature=0x7f090029;
+        public static final int pref_type_ambient_temperature_summary=0x7f09002a;
         /**  15 
          */
-        public static final int pref_type_game_rotation_vector=0x7f09002c;
-        public static final int pref_type_game_rotation_vector_summary=0x7f09002d;
+        public static final int pref_type_game_rotation_vector=0x7f09002d;
+        public static final int pref_type_game_rotation_vector_summary=0x7f09002e;
         /**  20 
          */
-        public static final int pref_type_geomagnetic_rotation_vector=0x7f090036;
-        public static final int pref_type_geomagnetic_rotation_vector_summary=0x7f090037;
+        public static final int pref_type_geomagnetic_rotation_vector=0x7f090037;
+        public static final int pref_type_geomagnetic_rotation_vector_summary=0x7f090038;
         /**  9 
          */
-        public static final int pref_type_gravity=0x7f090020;
-        public static final int pref_type_gravity_summary=0x7f090021;
+        public static final int pref_type_gravity=0x7f090021;
+        public static final int pref_type_gravity_summary=0x7f090022;
         /**  4 
          */
-        public static final int pref_type_gyroscope=0x7f090016;
-        public static final int pref_type_gyroscope_summary=0x7f090017;
+        public static final int pref_type_gyroscope=0x7f090017;
+        public static final int pref_type_gyroscope_summary=0x7f090018;
         /**  16 
          */
-        public static final int pref_type_gyroscope_uncalibrated=0x7f09002e;
-        public static final int pref_type_gyroscope_uncalibrated_summary=0x7f09002f;
+        public static final int pref_type_gyroscope_uncalibrated=0x7f09002f;
+        public static final int pref_type_gyroscope_uncalibrated_summary=0x7f090030;
         /**  5 
          */
-        public static final int pref_type_light=0x7f090018;
-        public static final int pref_type_light_summary=0x7f090019;
+        public static final int pref_type_light=0x7f090019;
+        public static final int pref_type_light_summary=0x7f09001a;
         /**  10 
          */
-        public static final int pref_type_linear_acceleration=0x7f090022;
-        public static final int pref_type_linear_acceleration_summary=0x7f090023;
+        public static final int pref_type_linear_acceleration=0x7f090023;
+        public static final int pref_type_linear_acceleration_summary=0x7f090024;
         /**  2 
          */
-        public static final int pref_type_magnetic_field=0x7f090012;
-        public static final int pref_type_magnetic_field_summary=0x7f090013;
+        public static final int pref_type_magnetic_field=0x7f090013;
+        public static final int pref_type_magnetic_field_summary=0x7f090014;
         /**  14 
          */
-        public static final int pref_type_magnetic_field_uncalibrated=0x7f09002a;
-        public static final int pref_type_magnetic_field_uncalibrated_summary=0x7f09002b;
+        public static final int pref_type_magnetic_field_uncalibrated=0x7f09002b;
+        public static final int pref_type_magnetic_field_uncalibrated_summary=0x7f09002c;
         /**  3 
          */
-        public static final int pref_type_orientation=0x7f090014;
-        public static final int pref_type_orientation_summary=0x7f090015;
+        public static final int pref_type_orientation=0x7f090015;
+        public static final int pref_type_orientation_summary=0x7f090016;
         /**  6 
          */
-        public static final int pref_type_pressure=0x7f09001a;
-        public static final int pref_type_pressure_summary=0x7f09001b;
+        public static final int pref_type_pressure=0x7f09001b;
+        public static final int pref_type_pressure_summary=0x7f09001c;
         /**  8 
          */
-        public static final int pref_type_proximity=0x7f09001e;
-        public static final int pref_type_proximity_summary=0x7f09001f;
+        public static final int pref_type_proximity=0x7f09001f;
+        public static final int pref_type_proximity_summary=0x7f090020;
         /**  12 
          */
-        public static final int pref_type_relative_humidity=0x7f090026;
-        public static final int pref_type_relative_humidity_summary=0x7f090027;
+        public static final int pref_type_relative_humidity=0x7f090027;
+        public static final int pref_type_relative_humidity_summary=0x7f090028;
         /**  11 
          */
-        public static final int pref_type_rotation_vector=0x7f090024;
-        public static final int pref_type_rotation_vector_summary=0x7f090025;
+        public static final int pref_type_rotation_vector=0x7f090025;
+        public static final int pref_type_rotation_vector_summary=0x7f090026;
         /**  17 
          */
-        public static final int pref_type_significant_motion=0x7f090030;
-        public static final int pref_type_significant_motion_summary=0x7f090031;
+        public static final int pref_type_significant_motion=0x7f090031;
+        public static final int pref_type_significant_motion_summary=0x7f090032;
         /**  19 
          */
-        public static final int pref_type_step_counter=0x7f090034;
-        public static final int pref_type_step_counter_summary=0x7f090035;
+        public static final int pref_type_step_counter=0x7f090035;
+        public static final int pref_type_step_counter_summary=0x7f090036;
         /**  18 
          */
-        public static final int pref_type_step_detector=0x7f090032;
-        public static final int pref_type_step_detector_summary=0x7f090033;
+        public static final int pref_type_step_detector=0x7f090033;
+        public static final int pref_type_step_detector_summary=0x7f090034;
         /**  7 
          */
-        public static final int pref_type_temperature=0x7f09001c;
-        public static final int pref_type_temperature_summary=0x7f09001d;
+        public static final int pref_type_temperature=0x7f09001d;
+        public static final int pref_type_temperature_summary=0x7f09001e;
         /**  App Profile 
          */
-        public static final int pref_user_name=0x7f090060;
-        public static final int pref_user_name_summary=0x7f090061;
+        public static final int pref_user_name=0x7f090061;
+        /**  6 May 2014 
+ <string name="pref_user_name_summary">version 0.1</string> 
+ 12 May 2014 
+         */
+        public static final int pref_user_name_summary=0x7f090062;
         /**  Optional button to Skip a PreferenceActivity [CHAR LIMIT=20] 
          */
-        public static final int skip_button_label=0x7f09006a;
+        public static final int skip_button_label=0x7f09006b;
         public static final int sync_complete_message=0x7f090006;
         public static final int sync_dialog_message=0x7f090005;
     }
