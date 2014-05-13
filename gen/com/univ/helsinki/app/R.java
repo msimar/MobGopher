@@ -147,8 +147,8 @@ public final class R {
         public static final int preference_list_fragment=0x7f03000e;
     }
     public static final class menu {
-        public static final int main=0x7f0b0000;
-        public static final int menu_endpoint_activity=0x7f0b0001;
+        public static final int menu_endpoint_activity=0x7f0b0000;
+        public static final int menu_main=0x7f0b0001;
     }
     public static final class string {
         public static final int action_add_feed=0x7f090003;
@@ -169,8 +169,8 @@ public final class R {
         public static final int app_name_alias=0x7f090001;
         /**   Strings for possible PreferenceActivity Back/Next buttons 
          */
-        public static final int back_button_label=0x7f090065;
-        public static final int next_button_label=0x7f090066;
+        public static final int back_button_label=0x7f090068;
+        public static final int next_button_label=0x7f090069;
         public static final int pref_=0x7f090038;
         public static final int pref_cancel_preferences=0x7f09005f;
         public static final int pref_category_title_choose_sensor=0x7f090040;
@@ -178,7 +178,7 @@ public final class R {
          */
         public static final int pref_category_title_create_feed=0x7f09003e;
         public static final int pref_category_title_manage_feed=0x7f09003f;
-        public static final int pref_configure_sensor_setting=0x7f090064;
+        public static final int pref_configure_sensor_setting=0x7f090067;
         public static final int pref_configure_sensor_setting_summary=0x7f09003b;
         public static final int pref_dialog_title_feed_server_name=0x7f090048;
         public static final int pref_dialog_title_feed_server_url=0x7f09004c;
@@ -196,6 +196,7 @@ public final class R {
         public static final int pref_save_preferences=0x7f09005e;
         public static final int pref_send_report=0x7f090039;
         public static final int pref_send_report_summary=0x7f09003a;
+        public static final int pref_summary_activity_config_feed=0x7f090063;
         public static final int pref_summary_choose_sensor=0x7f09005d;
         public static final int pref_summary_connection_mode=0x7f090055;
         public static final int pref_summary_feed_server_name=0x7f090047;
@@ -207,7 +208,9 @@ public final class R {
         public static final int pref_summary_sync_repeat=0x7f090057;
         public static final int pref_sync_frequency=0x7f09003c;
         public static final int pref_sync_frequency_summary=0x7f09003d;
+        public static final int pref_title_activity_config_feed=0x7f090062;
         public static final int pref_title_choose_sensor=0x7f09005c;
+        public static final int pref_title_config_feed=0x7f090064;
         public static final int pref_title_connection_mode=0x7f090054;
         public static final int pref_title_feed_server_name=0x7f090046;
         public static final int pref_title_feed_server_url=0x7f09004a;
@@ -216,6 +219,8 @@ public final class R {
         public static final int pref_title_manage_feed_logging=0x7f09005a;
         public static final int pref_title_sync_frequency=0x7f090052;
         public static final int pref_title_sync_repeat=0x7f090056;
+        public static final int pref_title_update_setting=0x7f090066;
+        public static final int pref_title_user_profile=0x7f090065;
         /**  1 
          */
         public static final int pref_type_accelerometer=0x7f090010;
@@ -300,15 +305,13 @@ public final class R {
          */
         public static final int pref_type_temperature=0x7f09001c;
         public static final int pref_type_temperature_summary=0x7f09001d;
-        public static final int pref_update_setting=0x7f090063;
         /**  App Profile 
          */
         public static final int pref_user_name=0x7f090060;
         public static final int pref_user_name_summary=0x7f090061;
-        public static final int pref_user_profile=0x7f090062;
         /**  Optional button to Skip a PreferenceActivity [CHAR LIMIT=20] 
          */
-        public static final int skip_button_label=0x7f090067;
+        public static final int skip_button_label=0x7f09006a;
         public static final int sync_complete_message=0x7f090006;
         public static final int sync_dialog_message=0x7f090005;
     }

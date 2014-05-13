@@ -166,9 +166,13 @@
     <!-- App Profile -->
     <string name="pref_user_name">MobGopher</string>
     <string name="pref_user_name_summary">version 0.1</string>
+    
+    <string name="pref_title_activity_config_feed">Manage Feed</string>
+    <string name="pref_summary_activity_config_feed">Add/Remove Endpoint Feed</string> 
      
-    <string name="pref_user_profile">App Profile</string>
-    <string name="pref_update_setting">Update Settings</string>
+    <string name="pref_title_config_feed">Configure Feed</string>
+    <string name="pref_title_user_profile">App Profile</string>
+    <string name="pref_title_update_setting">Update Settings</string>
     <string name="pref_configure_sensor_setting">Configure Sensor</string>
     
     <string-array name="listitem_menu_array">

@@ -9,7 +9,16 @@
         </PreferenceScreen>
     </PreferenceCategory> -->
     
-    <PreferenceCategory android:title="@string/pref_user_profile" >
+    <PreferenceCategory
+        android:title="@string/pref_title_config_feed">
+    <PreferenceScreen
+        android:title="@string/pref_title_activity_config_feed" 
+        android:summary="@string/pref_summary_activity_config_feed">
+        <intent android:action=".activities.EndPointActivity"/>
+    </PreferenceScreen>
+		</PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/pref_title_user_profile" >
         <EditTextPreference
             android:key="prefUsername"
             android:selectable="false"
@@ -27,7 +36,7 @@
             android:title="Licence" />
     </PreferenceCategory>
     
-    <PreferenceCategory android:title="@string/pref_update_setting" >
+    <PreferenceCategory android:title="@string/pref_title_update_setting" >
         
         <ListPreference
             android:key="prefSyncFrequency"

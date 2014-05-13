@@ -13,26 +13,29 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".AppController"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/activity_name_main"
-        android:theme="@style/AppTheme"
-        android:name=".AppController" >
-        
-        <!-- <activity
+        android:theme="@style/AppTheme" >
+
+        <!--
+        <activity
             android:name=".activities.SettingConfigureFeedActivity"
             android:label="@string/activity_name_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> -->
-        
+        </activity>
+        -->
+
         <activity
             android:name=".MainActivity"
             android:label="@string/activity_name_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -43,7 +46,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name=".activities.SettingPreferenceActivity"
             android:label="@string/activity_title_settings"
@@ -64,17 +66,20 @@
             android:label="@string/activity_name_view"
             android:parentActivityName=".MainActivity" >
         </activity>
-        
         <activity
             android:name=".activities.ManageEndPointActivity"
             android:label="@string/activity_name_endpoint"
             android:parentActivityName=".ManageEndPointActivity" >
         </activity>
-        
         <activity
             android:name=".activities.EndPointActivity"
             android:label="@string/activity_name_endpoint"
             android:parentActivityName=".MainActivity" >
+            <intent-filter>
+                <action android:name=".activities.EndPointActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <service android:name="LocationService" >
